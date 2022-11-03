@@ -20,8 +20,25 @@ def M0():
     ventanita.geometry('800x600')
     ventanita.configure()
 
+    # Create a countdown timer in the window
+    def countdown(count):
+
+        label['text'] = count
+
+        if count > 0:
+            # call countdown again after 1000ms (1s)
+            ventanita.after(1000, countdown, count-1)
+
+    label = tk.Label(ventanita)
+    label.place(x=50, y=150)
+
+    countdown(360)
+
     # Window´s header
+
     def header():
+        formula = interpolacion.formula()
+
         titulo1 = tk.Label(
             ventanita, text=f"Metodo numerico (Interpolacion)", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
@@ -29,15 +46,26 @@ def M0():
             ventanita, text=f"En este Metodo puedes asignar valores a las variables",
             fg="black")
         Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        displayFormula = tk.Label(
+            ventanita, text=f"La formula de para resolver este metodo es: {formula}",
+            fg="black")
+        displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
     # get the input from user
-    def formToGetValues():
+
+    def form():
+        LA = tk.Label(ventanita, text="Ingresa el valor de A")
+        LA.pack()
         A = Entry(ventanita, bd=5)
         A.pack()
 
+        LB = tk.Label(ventanita, text="Ingresa el valor de B")
+        LB.pack()
         B = Entry(ventanita, bd=5)
         B.pack()
 
+        LX = tk.Label(ventanita, text="Ingresa el valor de X")
+        LX.pack()
         X = Entry(ventanita, bd=5)
         X.pack()
 
@@ -62,7 +90,7 @@ def M0():
         margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
     header()
-    formToGetValues()
+    form()
 
 # Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
