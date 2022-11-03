@@ -20,19 +20,34 @@ def M0():
     ventanita.geometry('800x600')
     ventanita.configure()
 
+    # Window´s header
     def header():
         titulo1 = tk.Label(
             ventanita, text=f"Metodo numerico (Interpolacion)", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-
         Desc = tk.Label(
             ventanita, text=f"En este Metodo puedes asignar valores a las variables",
             fg="black")
         Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    # Return the problem solved
-    def returnResult():
+    # get the input from user
+    def formToGetValues():
+        A = Entry(ventanita, bd=5)
+        A.pack()
 
+        B = Entry(ventanita, bd=5)
+        B.pack()
+
+        X = Entry(ventanita, bd=5)
+        X.pack()
+
+        boton1 = Button(ventanita, text="Envíar",
+                        command=lambda: solveTheProblem(A, B, X))
+        boton1.pack(padx=5, pady=5, ipadx=5, ipady=5,
+                    fill=tk.X)
+
+    # This function solves the problem
+    def solveTheProblem(A, B, X):
         # interpolacion(2,5,4)
         metodo = interpolacion(int(A.get()), int(B.get()), int(X.get()))
 
@@ -46,36 +61,16 @@ def M0():
             fg="black")
         margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    # Form to get the values
-    def getValues():
-        L1 = Label(ventanita, text="A")
-        L1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
-        A = Entry(ventanita, bd=5)
-        A.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
-
-        L2 = Label(ventanita, text="B")
-        L2.pack(side=LEFT)
-        B = Entry(ventanita, bd=5)
-        B.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
-
-        L3 = Label(ventanita, text="X")
-        L3.pack(side=LEFT)
-        X = Entry(ventanita, bd=5)
-        X.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
-
-        boton1 = Button(ventanita, text="Envíar", command=returnResult)
-        boton1.pack(padx=5, pady=5, ipadx=5, ipady=5,
-                    fill=tk.X, side=RIGHT)
-
     header()
-    getValues()
+    formToGetValues()
+
 # Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
                           principal(), ventanita.destroy()])
-    botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1, side=BOTTOM)
+    botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.pack(padx=50, pady=10, side=BOTTOM)
+    botonCerrar.pack(padx=50, pady=10)
 
 
 def M1():
