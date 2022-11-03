@@ -4,7 +4,7 @@ from multiprocessing.sharedctypes import Value
 import tkinter as tk
 from tkinter import *
 from unittest import main
-
+import interpolacion_lineal
 
 # Variable global para que todas las funciones puedan manejar todas las ventanas
 main_window = tk.Tk()
@@ -23,9 +23,14 @@ def M0():
     titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
     Desc = tk.Label(
-        ventanita, text=f"En este Metodo puedes asignar valores a las variables", fg="black")
+        ventanita, text=f"En este Metodo puedes asignar valores a las variables",
+        fg="black")
     Desc.pack(padx=5, pady=20, ipadx=5, ipady=5, fill=tk.X)
 
+    margenDeError = tk.Label(
+        ventanita, text=f"El margen de error es de e={interpolacion_lineal.error}",  fg="black")
+
+    margenDeError.pack(padx=5, pady=20, ipadx=5, ipady=5, fill=tk.X)
 # Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
                           principal(), ventanita.destroy()])
