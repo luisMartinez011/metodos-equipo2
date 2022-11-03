@@ -4,7 +4,7 @@ from multiprocessing.sharedctypes import Value
 import tkinter as tk
 from tkinter import *
 from unittest import main
-import interpolacion_lineal
+from interpolacion_lineal import interpolacion
 
 # Variable global para que todas las funciones puedan manejar todas las ventanas
 main_window = tk.Tk()
@@ -16,28 +16,66 @@ def M0():
 
     main_window.withdraw()
     ventanita = tk.Toplevel()
-    ventanita.geometry('600x400')
+    # ventanita.geometry('600x400')
+    ventanita.geometry('800x600')
     ventanita.configure()
-    titulo1 = tk.Label(
-        ventanita, text=f"Metodo numerico (Interpolacion)", bg="green", fg="black")
-    titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    Desc = tk.Label(
-        ventanita, text=f"En este Metodo puedes asignar valores a las variables",
-        fg="black")
-    Desc.pack(padx=5, pady=20, ipadx=5, ipady=5, fill=tk.X)
+    def header():
+        titulo1 = tk.Label(
+            ventanita, text=f"Metodo numerico (Interpolacion)", bg="green", fg="black")
+        titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    margenDeError = tk.Label(
-        ventanita, text=f"El margen de error es de e={interpolacion_lineal.error}",  fg="black")
+        Desc = tk.Label(
+            ventanita, text=f"En este Metodo puedes asignar valores a las variables",
+            fg="black")
+        Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    margenDeError.pack(padx=5, pady=20, ipadx=5, ipady=5, fill=tk.X)
+    # Return the problem solved
+    def returnResult():
+
+        # interpolacion(2,5,4)
+        metodo = interpolacion(int(A.get()), int(B.get()), int(X.get()))
+
+        resultado = tk.Label(
+            ventanita, text=f"El resultado es de: {metodo.solve()}",
+            fg="black")
+        resultado.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+
+        margenDeError = tk.Label(
+            ventanita, text=f"El margen de error es de: {metodo.error()}",
+            fg="black")
+        margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+
+    # Form to get the values
+    def getValues():
+        L1 = Label(ventanita, text="A")
+        L1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
+        A = Entry(ventanita, bd=5)
+        A.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
+
+        L2 = Label(ventanita, text="B")
+        L2.pack(side=LEFT)
+        B = Entry(ventanita, bd=5)
+        B.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
+
+        L3 = Label(ventanita, text="X")
+        L3.pack(side=LEFT)
+        X = Entry(ventanita, bd=5)
+        X.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X, side=LEFT)
+
+        boton1 = Button(ventanita, text="Envíar", command=returnResult)
+        boton1.pack(padx=5, pady=5, ipadx=5, ipady=5,
+                    fill=tk.X, side=RIGHT)
+
+    header()
+    getValues()
 # Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
                           principal(), ventanita.destroy()])
-    botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1)
+    botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1, side=BOTTOM)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.place(x=120, y=122)
+    botonCerrar.pack(padx=50, pady=10, side=BOTTOM)
 
 
 def M1():

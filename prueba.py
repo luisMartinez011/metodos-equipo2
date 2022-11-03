@@ -1,3 +1,6 @@
-import interpolacion_lineal
+from interpolacion_lineal import interpolacion
 
-print(interpolacion_lineal.x)
+
+p1 = interpolacion(2, 5, 4)
+print(p1.solve())
+print(p1.error())
