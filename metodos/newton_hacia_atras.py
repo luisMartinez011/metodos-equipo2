@@ -3,7 +3,7 @@ import numpy as np
 import functools
 
 
-class Newton_hacia_adelante:
+class Newton_hacia_atras:
 
     def __init__(self):
         self.x = 3
@@ -15,11 +15,12 @@ class Newton_hacia_adelante:
 
     @staticmethod
     def formula():
-        return "g(x) = yi(s 0) + Δ´f(xi) (s 1) + Δ²f(xi) (s(s-1)/2!)+..."
+        return "g(x) = yi(s 0) + ∇´f(xi) (s 1) + ∇²f(xi) (s(s+1)/2!)+..."
 
     def solve(self):
         roundValue = 9
         save_H_Values = []
+
         for i in range(len(self.coords.xi)):
             if i == 0:
                 continue
@@ -33,11 +34,11 @@ class Newton_hacia_adelante:
         else:
             print("No tiene intervalos uniformes h")
 
-        s = np.round((self.x - self.coords.xi[0]) / h, roundValue)
+        s = np.round((self.x - self.coords.xi[2]) / h, roundValue)
 
         s0 = 1
         s1 = s
-        s2 = s*(s-1) / np.math.factorial(2)
+        s2 = s*(s+1) / np.math.factorial(2)
 
         delta = []
 
@@ -52,6 +53,6 @@ class Newton_hacia_adelante:
                 savePreviousDeltas = list(delta)
                 functools.reduce(agregarDelta, savePreviousDeltas)
 
-        g_x = self.coords.yi[0] * s0 + delta[0]*s1 + delta[2] * s2
+        g_x = self.coords.yi[2] * s0 + delta[1]*s1 + delta[2] * s2
         g_x = np.round(g_x, roundValue)
         return g_x
