@@ -1,12 +1,12 @@
 import numpy as np
 
 
-class interpolacion:
+class Interpolacion_lineal:
 
-    def __init__(self, a, b, x):
-        self.a = a
-        self.b = b
-        self.x = x
+    def __init__(self):
+        self.a = 2
+        self.b = 5
+        self.x = 4
 
     @staticmethod
     def formula():

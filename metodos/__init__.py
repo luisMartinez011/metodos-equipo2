@@ -1,0 +1,1 @@
+from metodos.interpolacion_lineal import Interpolacion_lineal

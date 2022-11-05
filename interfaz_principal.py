@@ -4,7 +4,7 @@ from multiprocessing.sharedctypes import Value
 import tkinter as tk
 from tkinter import *
 from unittest import main
-from interpolacion_lineal import interpolacion
+import metodos
 
 # Variable global para que todas las funciones puedan manejar todas las ventanas
 main_window = tk.Tk()
@@ -37,7 +37,7 @@ def M0():
     # Window´s header
 
     def header():
-        formula = interpolacion.formula()
+        formula = metodos.Interpolacion_lineal.formula()
 
         titulo1 = tk.Label(
             ventanita, text=f"Metodo numerico (Interpolacion)", bg="green", fg="black")
@@ -53,31 +53,10 @@ def M0():
 
     # get the input from user
 
-    def form():
-        LA = tk.Label(ventanita, text="Ingresa el valor de A")
-        LA.pack()
-        A = Entry(ventanita, bd=5)
-        A.pack()
-
-        LB = tk.Label(ventanita, text="Ingresa el valor de B")
-        LB.pack()
-        B = Entry(ventanita, bd=5)
-        B.pack()
-
-        LX = tk.Label(ventanita, text="Ingresa el valor de X")
-        LX.pack()
-        X = Entry(ventanita, bd=5)
-        X.pack()
-
-        boton1 = Button(ventanita, text="Envíar",
-                        command=lambda: solveTheProblem(A, B, X))
-        boton1.pack(padx=5, pady=5, ipadx=5, ipady=5,
-                    fill=tk.X)
-
     # This function solves the problem
-    def solveTheProblem(A, B, X):
-        # interpolacion(2,5,4)
-        metodo = interpolacion(int(A.get()), int(B.get()), int(X.get()))
+
+    def solveTheProblem():
+        metodo = metodos.Interpolacion_lineal()
 
         resultado = tk.Label(
             ventanita, text=f"El resultado es de: {metodo.solve()}",
@@ -90,7 +69,12 @@ def M0():
         margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
     header()
-    form()
+
+    # this button return the solution
+    returnSolution = Button(ventanita, text="Envíar",
+                            command=lambda: solveTheProblem())
+    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,
+                        fill=tk.X)
 
 # Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
