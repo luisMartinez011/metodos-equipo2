@@ -1,3 +1,4 @@
 import metodos
 
-print(metodos.Interpolacion_lineal().solve())
+interpolacion_lineal = metodos.Newton_hacia_adelante()
+print(interpolacion_lineal.solve())

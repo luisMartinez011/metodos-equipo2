@@ -8,11 +8,12 @@ class Interpolacion_lineal:
         self.b = 5
         self.x = 4
 
+    # returns a formula´s string
     @staticmethod
     def formula():
         return "( ( f(b) - f(a) ) / (b - a) ) * (x - a) + f(a) "
 
-    # solve the problem
+    # solves the problem
     def solve(self):
         f_a = np.log(self.a)
         f_b = np.log(self.b)
