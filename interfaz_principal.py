@@ -55,7 +55,7 @@ def Interfaz_del_Metodo(metodo):
 
     # This function solves the problem
 
-    def solveTheProblem():
+    def solvesTheProblem():
         metodo = metodos.Interpolacion_lineal()
 
         resultado = tk.Label(
@@ -72,7 +72,7 @@ def Interfaz_del_Metodo(metodo):
 
     # this button return the solution
     returnSolution = Button(ventanita, text="Envíar",
-                            command=lambda: solveTheProblem())
+                            command=lambda: solvesTheProblem())
     returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,
                         fill=tk.X)
 
@@ -111,17 +111,20 @@ def principal():
     etiqueta2 = Label(vprincipal, text="Selecciona el metodo de las opciones")
     etiqueta.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
     etiqueta2.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+
     # Lambda es utilizado para poder combinar dos funciones dentro de un solo boton, este metodo abre la ventana del metodo 0 y cierra la ventana del menu principal
-    #Mucho ojo con esta funcion Interfaz_del_Metodo(metodos.Interpolacion_lineal) tienen que cambiar el parametro
-    #dependiendo de que metodo se maneje ya que ahorita todos son iguales
+
+    # Mucho ojo con esta funcion Interfaz_del_Metodo(metodos.Interpolacion_lineal) tienen que cambiar el parametro
+    # dependiendo de que metodo se maneje ya que ahorita todos son iguales
+    # Ejemplo Interfaz_del_Metodo(metodos.nombre de la clase del metodo)
     button = tk.Button(vprincipal, text="Metodo numerico #1: Interpolacion",
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
     button.place(x=10, y=70)
     button = tk.Button(vprincipal, text="Metodo numerico #2: Newton Adelante",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Newton_hacia_adelante), vprincipal.destroy()])
     button.place(x=10, y=95)
     button = tk.Button(vprincipal, text="Metodo numerico #3: Newton Atras",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Newton_hacia_atras), vprincipal.destroy()])
     button.place(x=10, y=120)
     button = tk.Button(vprincipal, text="Metodo numerico #4: Lagrange",
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
@@ -148,7 +151,7 @@ def principal():
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
     button.place(x=10, y=320)
     button = tk.Button(vprincipal, text="Metodo numerico #12: Jacobi",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal),vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
     button.place(x=10, y=345)
     button = tk.Button(vprincipal, text="Metodo numerico #13: Linea recta",
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
