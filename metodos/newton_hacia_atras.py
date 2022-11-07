@@ -15,7 +15,7 @@ class Newton_hacia_atras:
 
     @staticmethod
     def formula():
-        return "g(x) = yi(s 0) + ∇´f(xi) (s 1) + ∇²f(xi) (s(s+1)/2!)+..."
+        return "Newton_hacia_atras.png"
 
     # returns the method name
     @staticmethod

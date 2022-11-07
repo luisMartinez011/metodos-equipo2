@@ -11,7 +11,7 @@ class Interpolacion_lineal:
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "( ( f(b) - f(a) ) / (b - a) ) * (x - a) + f(a) "
+        return "Interpolacion_lineal.png"
 
     @staticmethod
     def methodName():

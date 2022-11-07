@@ -15,7 +15,7 @@ class Newton_hacia_adelante:
 
     @staticmethod
     def formula():
-        return "g(x) = yi(s 0) + Δ´f(xi) (s 1) + Δ²f(xi) (s(s-1)/2!)+..."
+        return "/Newton_hacia_adelante.png"
 
     @staticmethod
     def methodName():

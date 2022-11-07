@@ -1,2 +1,2 @@
 # metodos-equipo2
-Team repository for numerical method class
+Team repository for numerical methods class
