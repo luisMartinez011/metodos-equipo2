@@ -17,6 +17,10 @@ class Newton_hacia_adelante:
     def formula():
         return "g(x) = yi(s 0) + Δ´f(xi) (s 1) + Δ²f(xi) (s(s-1)/2!)+..."
 
+    @staticmethod
+    def methodName():
+        return "Newton hacia adelante"
+
     def solve(self):
         roundValue = 9
         save_H_Values = []
