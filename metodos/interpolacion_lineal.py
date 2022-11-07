@@ -13,6 +13,10 @@ class Interpolacion_lineal:
     def formula():
         return "( ( f(b) - f(a) ) / (b - a) ) * (x - a) + f(a) "
 
+    @staticmethod
+    def methodName():
+        return "Interpolación lineal"
+
     # solves the problem
     def solve(self):
         f_a = np.log(self.a)
