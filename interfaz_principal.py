@@ -158,7 +158,7 @@ def principal():
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
     button.place(x=10, y=195)
     button = tk.Button(vprincipal, text="Metodo numerico #7: Punto fijo",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Punto_Fijo), vprincipal.destroy()])
     button.place(x=10, y=220)
     button = tk.Button(vprincipal, text="Metodo numerico #8: Rhapson",
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
