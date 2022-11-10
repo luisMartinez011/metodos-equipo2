@@ -57,7 +57,6 @@ def Interfaz_del_Metodo(metodo):
     # This function solves the problem
 
     def solvesTheProblem():
-        metodo = metodos.Interpolacion_lineal()
 
         resultado = tk.Label(
             ventanita, text=f"El resultado es de: {metodo.solve()}",
