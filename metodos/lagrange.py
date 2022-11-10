@@ -1,3 +1,9 @@
+import numpy as np
+import numpy.polynomial.polynomial as poly
+from scipy.interpolate import lagrange
+import sympy as sym
+
+
 class Lagrange:
 
     @staticmethod

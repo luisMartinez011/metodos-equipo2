@@ -148,7 +148,7 @@ def principal():
                        command=lambda: [Interfaz_del_Metodo(metodos.Newton_hacia_atras), vprincipal.destroy()])
     button.place(x=10, y=120)
     button = tk.Button(vprincipal, text="Metodo numerico #4: Lagrange",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Lagrange), vprincipal.destroy()])
     button.place(x=10, y=145)
     button = tk.Button(vprincipal, text="Metodo numerico #5: Newton con diferencias Divididas",
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
@@ -190,14 +190,17 @@ def principal():
                        command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
     button.place(x=10, y=470)
     button = tk.Button(vprincipal, text="Metodo numerico #18: Integracion - Regla trapezoidal",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_trapezoidal), vprincipal.destroy()])
     button.place(x=10, y=495)
     button = tk.Button(vprincipal, text="Metodo numerico #19: Integracion - Regla 1/3 Simpson",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_simpson13), vprincipal.destroy()])
     button.place(x=10, y=520)
     button = tk.Button(vprincipal, text="Metodo numerico #20: Integracion - Regla 3/8 Simpson",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
+                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_simpson38), vprincipal.destroy()])
     button.place(x=10, y=545)
+    button = tk.Button(vprincipal, text="Metodo numerico #21: Integracion - Newton Cotes Cerradas",
+                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_cotasCerrada), vprincipal.destroy()])
+    button.place(x=10, y=570)
 
 
 # Aqui es llamada la funcion principal por primera vez
