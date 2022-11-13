@@ -41,7 +41,7 @@ def Interfaz_del_Metodo(metodo):
         formula = metodo.formula()
 
         titulo1 = tk.Label(
-            ventanita, text=f"Metodo numerico ({metodo.methodName()})", bg="green", fg="black")
+            ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         Desc = tk.Label(
             ventanita, text=f"En este Metodo puedes asignar valores a las variables",
@@ -122,7 +122,7 @@ def principal():
 
     main_window.withdraw()
     vprincipal = tk.Toplevel()
-    vprincipal.geometry('600x600')
+    vprincipal.geometry('900x900')
     vprincipal.configure()
     """ Es el nombre de la aplicacion en la ventana """
     vprincipal.title("Aplicacion de metodos numericos")
@@ -135,72 +135,72 @@ def principal():
 
     # Lambda es utilizado para poder combinar dos funciones dentro de un solo boton, este metodo abre la ventana del metodo 0 y cierra la ventana del menu principal
 
-    # Mucho ojo con esta funcion Interfaz_del_Metodo(metodos.Interpolacion_lineal) tienen que cambiar el parametro
-    # dependiendo de que metodo se maneje ya que ahorita todos son iguales
-    # Ejemplo Interfaz_del_Metodo(metodos.nombre de la clase del metodo)
-    button = tk.Button(vprincipal, text="Metodo numerico #1: Interpolacion",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=70)
-    button = tk.Button(vprincipal, text="Metodo numerico #2: Newton Adelante",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Newton_hacia_adelante), vprincipal.destroy()])
-    button.place(x=10, y=95)
-    button = tk.Button(vprincipal, text="Metodo numerico #3: Newton Atras",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Newton_hacia_atras), vprincipal.destroy()])
-    button.place(x=10, y=120)
-    button = tk.Button(vprincipal, text="Metodo numerico #4: Lagrange",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Lagrange), vprincipal.destroy()])
-    button.place(x=10, y=145)
-    button = tk.Button(vprincipal, text="Metodo numerico #5: Newton con diferencias Divididas",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=170)
-    button = tk.Button(vprincipal, text="Metodo numerico #6: Metodo de la bisectriz",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=195)
-    button = tk.Button(vprincipal, text="Metodo numerico #7: Punto fijo",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Punto_Fijo), vprincipal.destroy()])
-    button.place(x=10, y=220)
-    button = tk.Button(vprincipal, text="Metodo numerico #8: Rhapson",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=245)
-    button = tk.Button(vprincipal, text="Metodo numerico #9: Falsa posicion",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=270)
-    button = tk.Button(vprincipal, text="Metodo numerico #10: Secante",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=295)
-    button = tk.Button(vprincipal, text="Metodo numerico #11: Gauss Seidel",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=320)
-    button = tk.Button(vprincipal, text="Metodo numerico #12: Jacobi",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=345)
-    button = tk.Button(vprincipal, text="Metodo numerico #13: Linea recta",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=370)
-    button = tk.Button(vprincipal, text="Metodo numerico #14: Linea recta Cuadratica",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=395)
-    button = tk.Button(vprincipal, text="Metodo numerico #15: Linea recta Cubica",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=420)
-    button = tk.Button(vprincipal, text="Metodo numerico #16: Lineal con funcion",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=445)
-    button = tk.Button(vprincipal, text="Metodo numerico #17: Lineal con funcion Matriz cuadratica",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Interpolacion_lineal), vprincipal.destroy()])
-    button.place(x=10, y=470)
-    button = tk.Button(vprincipal, text="Metodo numerico #18: Integracion - Regla trapezoidal",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_trapezoidal), vprincipal.destroy()])
-    button.place(x=10, y=495)
-    button = tk.Button(vprincipal, text="Metodo numerico #19: Integracion - Regla 1/3 Simpson",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_simpson13), vprincipal.destroy()])
-    button.place(x=10, y=520)
-    button = tk.Button(vprincipal, text="Metodo numerico #20: Integracion - Regla 3/8 Simpson",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_simpson38), vprincipal.destroy()])
-    button.place(x=10, y=545)
-    button = tk.Button(vprincipal, text="Metodo numerico #21: Integracion - Newton Cotes Cerradas",
-                       command=lambda: [Interfaz_del_Metodo(metodos.Integracion_cotasCerrada), vprincipal.destroy()])
-    button.place(x=10, y=570)
+    infoMetodos = [
+        {"nombre": "Interpolacion",
+         "metodo": metodos.Interpolacion_lineal,
+         "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton hacia adelante",
+            "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton hacia atras", "metodo": metodos.Newton_hacia_atras,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Lagrange", "metodo": metodos.Lagrange,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton con diferencias Divididas",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Metodo de la bisectriz",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Punto fijo", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Rhapson", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Falsa posicion", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Secante", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Gauss Seidel", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Jacobi", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Linea recta", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Linea recta cuadratica",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Linea recta cubica", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Lineal con interfaz", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Lineal con funcion Matriz cuadratica",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Regla trapezoidal", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Regla 1/3 Simpson", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Regla 3/8 Simpson", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton cotes cerradas",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Montante", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Gauss-Jordan", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton cotes abiertas",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "EDO Euler modificado",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Runge Kutta 2ndo orden",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Runge Kutta 3er orden",
+            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "", "metodo": metodos.Interpolacion_lineal,
+            "interfaz": Interfaz_del_Metodo}
+
+    ]
+    for x in range(29):
+        button = tk.Button(vprincipal, text=f"#{x+1}: {infoMetodos[x]['nombre']}",
+                           command=lambda: [infoMetodos[0]["interfaz"](infoMetodos[0]["metodo"]), vprincipal.destroy()])
+        button.place(x=10, y=(70+25*x))
 
 
 # Aqui es llamada la funcion principal por primera vez
