@@ -38,8 +38,6 @@ def Interfaz_del_Metodo(metodo):
     # Window´s header
 
     def header():
-        formula = metodo.formula()
-
         titulo1 = tk.Label(
             ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
@@ -48,7 +46,7 @@ def Interfaz_del_Metodo(metodo):
             fg="black")
         Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
-            ventanita, text=f"La formula de para resolver este metodo es: {formula}",
+            ventanita, text=f"La formula de para resolver este metodo es:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
@@ -136,9 +134,8 @@ def principal():
     # Lambda es utilizado para poder combinar dos funciones dentro de un solo boton, este metodo abre la ventana del metodo 0 y cierra la ventana del menu principal
 
     infoMetodos = [
-        {"nombre": "Interpolacion",
-         "metodo": metodos.Interpolacion_lineal,
-         "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Interpolacion", "metodo": metodos.Newton_hacia_adelante,
+            "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia adelante",
             "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia atras", "metodo": metodos.Newton_hacia_atras,
@@ -194,12 +191,21 @@ def principal():
         {"nombre": "Runge Kutta 3er orden",
             "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
         {"nombre": "", "metodo": metodos.Interpolacion_lineal,
-            "interfaz": Interfaz_del_Metodo}
+            "interfaz": Interfaz_del_Metodo},
+
+
 
     ]
+
+    def combine_funcs(*funcs):
+        def combined_func(*args, **kwargs):
+            for f in funcs:
+                f(*args, **kwargs)
+        return combined_func
     for x in range(29):
+
         button = tk.Button(vprincipal, text=f"#{x+1}: {infoMetodos[x]['nombre']}",
-                           command=lambda: [infoMetodos[0]["interfaz"](infoMetodos[0]["metodo"]), vprincipal.destroy()])
+                           command=lambda metodo=infoMetodos[x]["metodo"]: infoMetodos[x]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=10, y=(70+25*x))
 
 
