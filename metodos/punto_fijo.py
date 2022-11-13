@@ -4,7 +4,7 @@ import functools
 from math import *
 
 
-class PuntoFijo:
+class Punto_Fijo:
     tol = 10**(-5)
     a=0;
     @staticmethod
@@ -21,19 +21,22 @@ class PuntoFijo:
         m=f(a);
         k=0;
         iA =[]
-        self.coords = pd.DataFrame(list(zip(aux, m)),
-                                   columns=["Indice A", "Indice B", "Margen Error"])
-        print(df);
+        iB = []
+        iE = []
         while(abs(a-m)>tol):
             a=m;
             aux=m;
             m=f(a);
-            print('El intervalo es [', aux, ',' , m , ']');
+
             k = k+1;
-
-        print('x',k,'=',m,'es la mejor aproximacion');
-        print ('Aproximacion = ' , (a-m) , ', Margen error: ', tol);
-
+            iA.append[aux];
+            iB.append[m];
+            iE.append[(a-m)];
+       self.coords = pd.DataFrame(list(zip(iA, iB, iE)),
+                                   columns=["Indice A", "Indice B", "Margen Error"])
+    def error(self):
+        e = self.a - self.m;
+        return abs(e);
   
 
 
