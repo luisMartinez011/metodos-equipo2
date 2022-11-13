@@ -21,6 +21,26 @@ def Interfaz_del_Metodo(metodo):
     ventanita.geometry('1000x1000')
     ventanita.configure()
 
+    def generateImages():
+        canvas = Canvas(
+            ventanita,
+            width=500,
+            height=400
+        )
+        canvas.pack()
+        global img
+        img = ImageTk.PhotoImage(Image.open(f'metodos/img/{metodo.formula()}'))
+
+        canvas.create_image(
+            10,
+            10,
+            anchor=NW,
+            image=img
+        )
+        Label(
+            text=f'width: {img.width()} height: {img.height()}'
+        ).pack()
+
     # Create a countdown timer in the window
     def countdown(count):
 
@@ -32,7 +52,8 @@ def Interfaz_del_Metodo(metodo):
 
     label = tk.Label(ventanita)
     label.place(x=50, y=150)
-
+    tituloTemporizador = tk.Label(ventanita, text=f"Temporizador: ")
+    tituloTemporizador.place(x=50, y=120)
     countdown(360)
 
     # Window´s header
@@ -49,6 +70,7 @@ def Interfaz_del_Metodo(metodo):
             ventanita, text=f"La formula de para resolver este metodo es:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        generateImages()
 
     # get the input from user
 
@@ -75,34 +97,14 @@ def Interfaz_del_Metodo(metodo):
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
-                          principal(), ventanita.destroy()])
+        principal(), ventanita.destroy()])
     botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
     botonCerrar.pack(padx=50, pady=10)
 
     # this function generates a formula image
-    def generateImages():
-        canvas = Canvas(
-            ventanita,
-            width=500,
-            height=400
-        )
-        canvas.pack()
-        global img
-        img = ImageTk.PhotoImage(Image.open(f'metodos/img/{metodo.formula()}'))
 
-        canvas.create_image(
-            10,
-            10,
-            anchor=NW,
-            image=img
-        )
-        Label(
-            text=f'width: {img.width()} height: {img.height()}'
-        ).pack()
-
-    generateImages()
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
 
