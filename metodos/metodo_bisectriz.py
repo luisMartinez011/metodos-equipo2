@@ -6,7 +6,6 @@ from math import *
 
 
 class Bisectriz:
-    tol = 10**(-3)
 
     @staticmethod
     def formula():
@@ -25,6 +24,7 @@ class Bisectriz:
         m1 = a
         m = b
         k = 0
+        tol = 10**(-3)
         iA = []
         iB = []
         iE = []
@@ -43,9 +43,7 @@ class Bisectriz:
         iB.append[b]
         ext = abs(m1-m)
         iE.append[(ext)]
-
-        self.coords = pd.DataFrame(list(zip(iA, iB, iE)),
-                                   columns=["Indice A", "Indice B", "Margen Error"])
+        
         return
 
     def error(self):
