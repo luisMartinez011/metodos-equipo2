@@ -5,8 +5,12 @@ from math import *
 
 
 class Punto_Fijo:
-    tol = 10**(-5)
-    a = 0
+    
+    
+    def __init__(self):
+        self.tol = 10**(-5)
+        self.a = 0
+        self.x = 0 
 
     @staticmethod
     def formula():
@@ -16,20 +20,20 @@ class Punto_Fijo:
     def methodName():
         return "Punto Fijo"
 
-    def f(x):
-        return exp(-x)
+    def func(self):
+        return exp(-self.x)
 
     def solve(self):
         aux = 0
-        m = f(a)
+        m = self.func(self.a)
         k = 0
         iA = []
         iB = []
         iE = []
-        while (abs(a-m) > tol):
+        while (abs(a-m) > self.tol):
             a = m
             aux = m
-            m = f(a)
+            m = self.func(self.a)
 
             k = k+1
             iA.append[aux]
