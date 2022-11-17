@@ -5,6 +5,8 @@ import tkinter as tk
 from tkinter import *
 from unittest import main
 from PIL import ImageTk, Image
+from time import strftime
+from time import gmtime
 import metodos
 
 # Variable global para que todas las funciones puedan manejar todas las ventanas
@@ -14,7 +16,6 @@ main_window = tk.Tk()
 
 
 def Interfaz_del_Metodo(metodo):
-
     main_window.withdraw()
     ventanita = tk.Toplevel()
     # ventanita.geometry('600x400')
@@ -42,10 +43,10 @@ def Interfaz_del_Metodo(metodo):
         ).pack()
 
     # Create a countdown timer in the window
+
     def countdown(count):
 
-        label['text'] = count
-
+        label['text'] = strftime("%M:%S", gmtime(count))
         if count > 0:
             # call countdown again after 1000ms (1s)
             ventanita.after(1000, countdown, count-1)
