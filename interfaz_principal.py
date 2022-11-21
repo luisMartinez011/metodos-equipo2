@@ -15,13 +15,32 @@ main_window = tk.Tk()
 # VENTANAS DE INICIO DE CADA METODO - Aporte: Moises Gomez 2 nov 2022
 
 
-def Interfaz_del_Metodo(metodo):
+def Interfaz_del_Metodo(metodoElegido):
+    metodo = metodoElegido()
+
     main_window.withdraw()
     ventanita = tk.Toplevel()
     # ventanita.geometry('600x400')
     ventanita.geometry('1000x1000')
     ventanita.configure()
+    var = IntVar()
 
+    # Window´s header
+    def header():
+        titulo1 = tk.Label(
+            ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
+        titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        Desc = tk.Label(
+            ventanita, text=f"En este Metodo puedes asignar valores a las variables",
+            fg="black")
+        Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        displayFormula = tk.Label(
+            ventanita, text=f"La formula de para resolver este metodo es:",
+            fg="black")
+        displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        generateImages()
+
+    # this function generates a formula image
     def generateImages():
         canvas = Canvas(
             ventanita,
@@ -57,27 +76,14 @@ def Interfaz_del_Metodo(metodo):
     tituloTemporizador.place(x=50, y=120)
     countdown(360)
 
-    # Window´s header
-
-    def header():
-        titulo1 = tk.Label(
-            ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
-        titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        Desc = tk.Label(
-            ventanita, text=f"En este Metodo puedes asignar valores a las variables",
-            fg="black")
-        Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        displayFormula = tk.Label(
-            ventanita, text=f"La formula de para resolver este metodo es:",
-            fg="black")
-        displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        generateImages()
-
     # get the input from user
 
     # This function solves the problem
 
-    def solvesTheProblem():
+    def solvesTheProblem(opcionElegida):
+        selection = "You selected the option " + str(opcionElegida.get())
+        label.config(text=selection)
+        label.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
         resultado = tk.Label(
             ventanita, text=f"El resultado es de: {metodo.solve()}",
@@ -90,9 +96,26 @@ def Interfaz_del_Metodo(metodo):
         margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
     header()
+
+    def sel():
+        selection = "You selected the option " + str(var.get())
+        label.config(text=selection)
+        label.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+
+    R1 = Radiobutton(ventanita, text="Option 1",
+                     variable=opcionElegida, value=1)
+    R1.pack(anchor=W)
+
+    R2 = Radiobutton(ventanita, text="Option 2",
+                     variable=opcionElegida, value=2)
+    R2.pack(anchor=W)
+
+    R3 = Radiobutton(ventanita, text="Option 3",
+                     variable=opcionElegida, value=3)
+    R3.pack(anchor=W)
     # this button returns the solution
     returnSolution = Button(ventanita, text="Resolver problema",
-                            command=lambda: solvesTheProblem())
+                            command=lambda: solvesTheProblem(opcionElegida))
     returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,
                         fill=tk.X)
 
@@ -103,8 +126,6 @@ def Interfaz_del_Metodo(metodo):
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
     botonCerrar.pack(padx=50, pady=10)
-
-    # this function generates a formula image
 
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
@@ -137,7 +158,7 @@ def principal():
     # Lambda es utilizado para poder combinar dos funciones dentro de un solo boton, este metodo abre la ventana del metodo 0 y cierra la ventana del menu principal
 
     infoMetodos = [
-        {"nombre": "Interpolacion", "metodo": metodos.Newton_hacia_adelante,
+        {"nombre": "Interpolacion", "metodo": metodos.Interpolacion_lineal,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia adelante",
             "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
