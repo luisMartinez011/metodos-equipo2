@@ -23,7 +23,7 @@ def Interfaz_del_Metodo(metodoElegido):
     # ventanita.geometry('600x400')
     ventanita.geometry('1000x1000')
     ventanita.configure()
-    var = IntVar()
+    opcionElegida = IntVar()
 
     # Window´s header
     def header():
