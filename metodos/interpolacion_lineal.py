@@ -1,12 +1,22 @@
 import numpy as np
+from random import randint
 
 
 class Interpolacion_lineal:
 
     def __init__(self):
-        self.a = 2
-        self.b = 5
-        self.x = 4
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.a = 2
+            self.b = 5
+            self.x = 4
+            self.problemImage = "Interpolacion_lineal_1.png"
+        elif selectProblem == 2:
+            self.a = 3
+            self.b = 5
+            self.x = 4
+            self.problemImage = "Interpolacion_lineal_2.png"
+        self.selectProblem = selectProblem
 
     # returns a formula´s string
     @staticmethod
@@ -18,6 +28,7 @@ class Interpolacion_lineal:
         return "Interpolación lineal"
 
     # solves the problem
+
     def solve(self):
         f_a = np.log(self.a)
         f_b = np.log(self.b)

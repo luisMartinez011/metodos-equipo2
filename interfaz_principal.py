@@ -7,6 +7,7 @@ from unittest import main
 from PIL import ImageTk, Image
 from time import strftime
 from time import gmtime
+from functools import partial
 import metodos
 
 # Variable global para que todas las funciones puedan manejar todas las ventanas
@@ -23,7 +24,6 @@ def Interfaz_del_Metodo(metodoElegido):
     # ventanita.geometry('600x400')
     ventanita.geometry('1000x1000')
     ventanita.configure()
-    opcionElegida = IntVar()
 
     # Window´s header
     def header():
@@ -39,26 +39,54 @@ def Interfaz_del_Metodo(metodoElegido):
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         generateImages()
+        displayFormula = tk.Label(
+            ventanita, text=f"El problema es el siguinte:",
+            fg="black")
+        displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        printProblemImage()
 
     # this function generates a formula image
     def generateImages():
         canvas = Canvas(
             ventanita,
             width=500,
-            height=400
+            height=300
         )
         canvas.pack()
-        global img
-        img = ImageTk.PhotoImage(Image.open(f'metodos/img/{metodo.formula()}'))
+        global formulaIMG
+        formulaIMG = ImageTk.PhotoImage(
+            Image.open(f'metodos/img/{metodo.formula()}'))
 
         canvas.create_image(
             10,
             10,
             anchor=NW,
-            image=img
+            image=formulaIMG
         )
         Label(
-            text=f'width: {img.width()} height: {img.height()}'
+            text=f'width: {formulaIMG.width()} height: {formulaIMG.height()}'
+        ).pack()
+
+    # Print the problem image in the window
+    def printProblemImage():
+        canvas = Canvas(
+            ventanita,
+            width=500,
+            height=100
+        )
+        canvas.pack()
+        global problemIMG
+        problemIMG = ImageTk.PhotoImage(
+            Image.open(f'metodos/problems_img/{metodo.problemImage}'))
+
+        canvas.create_image(
+            10,
+            10,
+            anchor=NW,
+            image=problemIMG
+        )
+        Label(
+            text=f'width: {problemIMG.width()} height: {problemIMG.height()}'
         ).pack()
 
     # Create a countdown timer in the window
@@ -97,22 +125,25 @@ def Interfaz_del_Metodo(metodoElegido):
 
     header()
 
-    def sel():
-        selection = "You selected the option " + str(var.get())
-        label.config(text=selection)
-        label.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+    opcionElegida = IntVar()
+    opcionElegida.set(1)
+    languages = [("Python", 101),
+                 ("Perl", 102),
+                 ("Java", 103),
+                 ("C++", 104),
+                 ("C", 105)]
 
-    R1 = Radiobutton(ventanita, text="Option 1",
-                     variable=opcionElegida, value=1)
-    R1.pack(anchor=W)
+    def ShowChoice():
+        return
 
-    R2 = Radiobutton(ventanita, text="Option 2",
-                     variable=opcionElegida, value=2)
-    R2.pack(anchor=W)
+    for language, val in languages:
+        tk.Radiobutton(ventanita,
+                       text=language,
+                       padx=20,
+                       variable=opcionElegida,
+                       command=ShowChoice,
+                       value=val).pack(anchor=tk.W)
 
-    R3 = Radiobutton(ventanita, text="Option 3",
-                     variable=opcionElegida, value=3)
-    R3.pack(anchor=W)
     # this button returns the solution
     returnSolution = Button(ventanita, text="Resolver problema",
                             command=lambda: solvesTheProblem(opcionElegida))
