@@ -127,22 +127,19 @@ def Interfaz_del_Metodo(metodoElegido):
 
     opcionElegida = IntVar()
     opcionElegida.set(1)
-    languages = [("Python", 101),
-                 ("Perl", 102),
-                 ("Java", 103),
-                 ("C++", 104),
-                 ("C", 105)]
+    possibleSolutions = metodo.generatePossibleSolutions()
 
+    # Don´t remove this function, if you remove it, the program isn´t going to work
     def ShowChoice():
         return
 
-    for language, val in languages:
+    for i in possibleSolutions:
         tk.Radiobutton(ventanita,
-                       text=language,
+                       text=i,
                        padx=20,
                        variable=opcionElegida,
                        command=ShowChoice,
-                       value=val).pack(anchor=tk.W)
+                       value=i).pack(anchor=tk.W)
 
     # this button returns the solution
     returnSolution = Button(ventanita, text="Resolver problema",
