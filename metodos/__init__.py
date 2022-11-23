@@ -10,6 +10,7 @@ from metodos.raphson import Newton_Raphson
 from metodos.secante import Secante
 
 
+from metodos.gaussjordan import GaussJordan
 
 from metodos.integracion_trapezoidal import Integracion_trapezoidal
 from metodos.integracion_simson13 import Integracion_simpson13
