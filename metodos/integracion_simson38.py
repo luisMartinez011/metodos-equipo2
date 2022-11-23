@@ -6,13 +6,17 @@ class Integracion_simpson38:
     def __init__(self):
         self.a = 0
         self.b = 1
+        self.e = 2.71828182845
         self.n = 3
-        self.h = ((self.b - self.a)/self.n)
+
+        self.h = (self.b - self.a)/self.n
+        
+        self.x = 4
 
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "/3octavos_simpson.png"
+        return "/3octavos_simpson2.png"
 
     @staticmethod
     def methodName():
@@ -20,14 +24,23 @@ class Integracion_simpson38:
 
     # solves the problem
     def solve(self):
-        ValorI = np((self.h)*(3/8))
-        f_a = np(1-(self.a)^2)
-        f_sumatoria = np(3*((1-((self.h)*1)^2) +  (1-((self.h)*2)^2) + (1-((self.h)*3)^2) ))
-        f_b = np(1-(self.b)^2)
+        ValorI = (self.h)*(3/8)
+        f_a = ((self.a)**3)*(self.e**(self.a))
+        f_b = ((self.b)**3)*(self.e**(self.b))
+
+        f_h1 = ((self.h*1)**3) * (self.e**(self.h*1))
+        f_h2 = ((self.h*2)**3) * (self.e**(self.h*2))
         
-        g_x = ValorI * (f_a + f_b + f_sumatoria)
+        f_suma = 3* (f_h1 + f_h2)
+
+        g_x = ValorI * (f_a + f_b + f_suma)
+
         self.g_x = g_x
+
         return g_x
+    
+
+    
 
     # return error margin
     def error(self):
