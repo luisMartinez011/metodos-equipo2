@@ -1,3 +1,4 @@
+from random import randint
 import pandas as pd
 import numpy as np
 import functools
@@ -6,8 +7,16 @@ from mpmath import *
 class Secante():
 
     def __init__(self):
-        self.x1 = 1 # valor siguiente del intervalo
-        self.x0 = 0 # valor anterior del intervalo (se sustituye por el valor de x1)
+        #agregar imagenes
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.x1 = 1 # valor siguiente del intervalo
+            self.x0 = 0 # valor anterior del intervalo (se sustituye por el valor de x1)
+            self.formula = 1
+        elif selectProblem == 2:
+            self.x1 = 1 # valor siguiente del intervalo
+            self.x0 = 0 # valor anterior del intervalo (se sustituye por el valor de x1)
+            self.formula = 2    
         self.fx1 = 0
         self.fx0 = 0
         self.x= 0
@@ -21,7 +30,7 @@ class Secante():
 
     #Funciones para calcular x0 y x1 
     def funx0(self):
-        self.fx0 = round(exp(-self.x0) - self.x0, 9)
+        self.fx0 = round(exp(-self.x0) - self.x0, 9) #modificar para agregar dos formulas
     def funx1(self):
          self.fx1 = round(exp(-self.x1) - self.x1 , 9)
     #Funcion general para x
@@ -38,10 +47,11 @@ class Secante():
             self.x0 = self.x1
             self.fx0 = self.fx1
             self.x1 = nx
-        #Imprime el resultado buscar la manera de imprirlo en la interfaz
-        print("{:.9f}".format(self.x1) , " ----" , "{:.9f}".format(abs(self.x1 - self.x0)))
+        avx0 = format(self.x0, '0.9f')
+        avx1 = format(self.x1, '0.9f')
+        return avx0, avx1
+    
+    
     def error(self):
         err = abs(self.x1 - self.x0)
         return err
-test = Secante()
-test.solve()

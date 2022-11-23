@@ -1,3 +1,4 @@
+from random import randint
 import pandas as pd
 import numpy as np
 import functools
@@ -6,8 +7,22 @@ from math import *
 
 
 class Newton_Raphson:
-    tol = 10**(-5)
-
+    
+    def __init__(self):
+        self.tol = 10**(-5)
+        self.x = 0
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.x1 = 1
+            self.indi = 1
+            #self.problemImage = "Bisectriz_1"
+        elif selectProblem == 2:
+            self.self.x1 = 2
+            self.indi = 2
+            #self.problemImage = "Bisectriz_1"
+        self.x1 = 0
+        self.k = 0  
+        self.n = 100    
     @staticmethod
     def formula():
         return "Raphson.png"
@@ -16,31 +31,22 @@ class Newton_Raphson:
     def methodName():
         return "Newton Raphson"
 
+    def f(self):
+        #aqui van las funciones 
+        print ('fuck')
+    def df(self):
+        #aqui va la derivada de la funcion
+        print ('fuck')
+
     def solve(self):
-        x = sp.symbols('x')  # Crea la variable para la formula
-        f = input('Digite la funcion con variable x:')
-        df = sp.diff(f)  # derivada de la funcion
-        f = sp.lambdify(x, f)  # Crea la funcion respecto a x
-        df = sp.lambdify(x, df)
-        x0 = int(input('Valor inicial de  X: '))
-        x1 = 0
-        lx1 = []
-        lxE = []
-        n = int(input('Numero de interacciones aproximadas: '))
-        for k in range(n):
-            x1 = x0-f(x0)/df(x0)
-            if (abs(x1-x0) < tol):
-                aux = abs(x1-x0)
-                lx1.append[format(x1, '0.9f')]
-                lxE.append[format(aux, '0.9f')]
-                self.coords = pd.DataFrame(list(zip(lx1, ixE)),
-                                           columns=["X(i+1)", "Margen Error"])
-                return
-            x0 = x1
-            aux = abs(x1-x0)
-            lx1.append[format(x1, '0.9f')]
-            lxE.append[format(aux, '0.9f')]
+
+        for self.k in range(self.n):
+            self.x1 = self.x0-self.f(self.x0)/self.df(self.x0)
+            if (abs(self.x1-self.x0) < self.tol):
+                return self.x0, self.x1
+            self.x0 = self.x1
+            aux = abs(self.x1-self.x0)
 
     def error(self):
-        ext = abs(x1-x0)
-        return format(abs(x1-x0), '0.9f')
+        ext = abs(self.x1-self.x0)
+        return format(abs(self.x1-self.x0), '0.9f')

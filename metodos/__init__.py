@@ -5,9 +5,12 @@ from metodos.lagrange import Lagrange
 from metodos.newton_diferencias_divididas import Newton_Diferencias_Divididas
 
 from metodos.punto_fijo import Punto_Fijo
-#from metodos.metodo_bisectriz import Bisectriz
+from metodos.metodo_bisectriz import Bisectriz
 from metodos.raphson import Newton_Raphson
+from metodos.secante import Secante
 
+
+from metodos.gauss_jordan import GaussJordan
 
 from metodos.integracion_trapezoidal import Integracion_trapezoidal
 from metodos.integracion_simson13 import Integracion_simpson13
