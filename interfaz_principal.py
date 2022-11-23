@@ -46,6 +46,7 @@ def Interfaz_del_Metodo(metodoElegido):
         printProblemImage()
 
     # this function generates a formula image
+
     def generateImages():
         canvas = Canvas(
             ventanita,
@@ -67,7 +68,7 @@ def Interfaz_del_Metodo(metodoElegido):
             text=f'width: {formulaIMG.width()} height: {formulaIMG.height()}'
         ).pack()
 
-    # Print the problem image in the window
+    # Prints an image of the problem in the window
     def printProblemImage():
         canvas = Canvas(
             ventanita,
@@ -89,44 +90,76 @@ def Interfaz_del_Metodo(metodoElegido):
             text=f'width: {problemIMG.width()} height: {problemIMG.height()}'
         ).pack()
 
+    header()
     # Create a countdown timer in the window
+    global sec
+    global doTick
+    sec = 300
+    doTick = True
 
-    def countdown(count):
+    def tick():
+        global sec
+        if not doTick:
+            return
+        sec -= 0.1
+        sec = round(sec, 1)
+        timeLabel.configure(text=sec)
+        ventanita.after(100, tick)
 
-        label['text'] = strftime("%M:%S", gmtime(count))
-        if count > 0:
-            # call countdown again after 1000ms (1s)
-            ventanita.after(1000, countdown, count-1)
+    def stop():
+        global doTick
+        doTick = False
 
-    label = tk.Label(ventanita)
-    label.place(x=50, y=150)
+    def start():
+        global doTick
+        doTick = True
+        # Perhaps reset `sec` too?
+        tick()
+
     tituloTemporizador = tk.Label(ventanita, text=f"Temporizador: ")
     tituloTemporizador.place(x=50, y=120)
-    countdown(360)
-
-    # get the input from user
+    timeLabel = tk.Label(ventanita, font=('Helvetica', 25))
+    timeLabel.place(x=50, y=150)
+    start()
 
     # This function solves the problem
 
     def solvesTheProblem(opcionElegida):
-        selection = "You selected the option " + str(opcionElegida.get())
-        label.config(text=selection)
-        label.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        stop()
+        solution = metodo.solve()
+        selection = ""
+        try:
+            float(opcionElegida.get())
+        except:
+            print("")
+        else:
+            if float(opcionElegida.get()) == metodo.solve():
+                selection = "Tu respuesta es correcta "
+
+        try:
+            int(opcionElegida.get())
+        except:
+            print("")
+        else:
+            if int(opcionElegida.get()) == metodo.solve():
+                selection = "Tu respuesta es correcta "
+
+        if len(selection) == 0:
+            selection = "Respuesta incorrecta, la respuesta correcta era: " + \
+                str(solution)
 
         resultado = tk.Label(
-            ventanita, text=f"El resultado es de: {metodo.solve()}",
+            ventanita, text=selection,
             fg="black")
         resultado.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-        margenDeError = tk.Label(
-            ventanita, text=f"El margen de error es de: {metodo.error()}",
-            fg="black")
-        margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        # margenDeError = tk.Label(
+        #     ventanita, text=f"El margen de error es de: {metodo.error()}",
+        #     fg="black")
+        # margenDeError.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    header()
-
-    opcionElegida = IntVar()
-    opcionElegida.set(1)
+    opcionElegida = StringVar()
+    opcionElegida.set("1")
     possibleSolutions = metodo.generatePossibleSolutions()
 
     # Don´t remove this function, if you remove it, the program isn´t going to work
@@ -144,8 +177,7 @@ def Interfaz_del_Metodo(metodoElegido):
     # this button returns the solution
     returnSolution = Button(ventanita, text="Resolver problema",
                             command=lambda: solvesTheProblem(opcionElegida))
-    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,
-                        fill=tk.X)
+    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,)
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [

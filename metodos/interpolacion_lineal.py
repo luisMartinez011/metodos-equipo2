@@ -33,7 +33,7 @@ class Interpolacion_lineal:
         solution = self.solve()
         # change this value if you want customized solutions
         # if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.1
+        standard_deviation = 0.5
         fake_solutions = 4
 
         rng = np.random.default_rng()
