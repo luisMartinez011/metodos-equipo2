@@ -17,13 +17,18 @@ class GaussJordan:
             self.A = np.array([[4,2,5],
                                [2,5,8],
                                [5,4,3]])
+            self.B = np.array([[60.70],
+                           [92.90],
+                           [56.30]])
+            self.problemImage = "Gauss1.png"
         elif selectProblem == 2:
             self.A = np.array([[3,-2,2],
                                [4,2,2],
                                [3,-3,3]])
-        self.B = np.array([[60.70],
-                           [92.90],
-                           [56.30]])
+            self.B = np.array([[1],
+                           [2],
+                           [3]])
+            self.problemImage = "Gauss2.png"
         self.casicero = 1e-15;
         self.AB = 0
         self.AB0 = 0    
