@@ -5,7 +5,7 @@ class GaussJordan:
 
     @staticmethod
     def formula():
-        return "/Gauss.png"
+        return "/Gauss.jpg"
 
     @staticmethod
     def methodName():
