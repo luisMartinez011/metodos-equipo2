@@ -18,7 +18,7 @@ class Interpolacion_lineal:
             self.problemImage = "Interpolacion_lineal_2.png"
         self.selectProblem = selectProblem
 
-    # returns a formula´s string
+    # returns the direction of the formula image
     @staticmethod
     def formula():
         return "Interpolacion_lineal.png"
@@ -32,7 +32,7 @@ class Interpolacion_lineal:
     def generatePossibleSolutions(self):
         solution = self.solve()
         # change this value if you want customized solutions
-        # if your solution is an integer number, change this value to an integer
+        # (optional) if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
         fake_solutions = 4
 
@@ -53,6 +53,7 @@ class Interpolacion_lineal:
         return g_x
 
     # return error margin
+    # some problems may not have this method
     def error(self):
         f_x = np.log(self.x)
         error = abs(f_x - self.g_x)
