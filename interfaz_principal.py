@@ -94,7 +94,7 @@ def Interfaz_del_Metodo(metodoElegido):
     # Create a countdown timer in the window
     global sec
     global doTick
-    sec = 2
+    sec = 360
     doTick = True
 
     def tick():
@@ -106,7 +106,7 @@ def Interfaz_del_Metodo(metodoElegido):
             return
         sec -= 0.1
         sec = round(sec, 1)
-        timeLabel.configure(text=sec)
+        timeLabel.configure(text=strftime("%M:%S", gmtime(sec)))
         ventanita.after(100, tick)
 
     def stop():
@@ -241,7 +241,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Lagrange", "metodo": metodos.Lagrange,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton con diferencias Divididas",
+        {"nombre": "Newton con diferencias divididas",
             "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
     ]
 
