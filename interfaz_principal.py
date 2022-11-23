@@ -73,7 +73,7 @@ def Interfaz_del_Metodo(metodoElegido):
         canvas = Canvas(
             ventanita,
             width=500,
-            height=100
+            height=200
         )
         canvas.pack()
         global problemIMG
@@ -94,12 +94,15 @@ def Interfaz_del_Metodo(metodoElegido):
     # Create a countdown timer in the window
     global sec
     global doTick
-    sec = 300
+    sec = 2
     doTick = True
 
     def tick():
         global sec
         if not doTick:
+            return
+        if sec <= 0:
+            timeLabel.configure(text="El tiempo se ha acabado")
             return
         sec -= 0.1
         sec = round(sec, 1)
@@ -117,9 +120,9 @@ def Interfaz_del_Metodo(metodoElegido):
         tick()
 
     tituloTemporizador = tk.Label(ventanita, text=f"Temporizador: ")
-    tituloTemporizador.place(x=50, y=120)
-    timeLabel = tk.Label(ventanita, font=('Helvetica', 25))
-    timeLabel.place(x=50, y=150)
+    tituloTemporizador.place(x=20, y=120)
+    timeLabel = tk.Label(ventanita, font=('Helvetica', 15))
+    timeLabel.place(x=20, y=150)
     start()
 
     # This function solves the problem
@@ -175,7 +178,7 @@ def Interfaz_del_Metodo(metodoElegido):
                        value=i).pack(anchor=tk.W)
 
     # this button returns the solution
-    returnSolution = Button(ventanita, text="Resolver problema",
+    returnSolution = Button(ventanita, text="Comprobar respuesta",
                             command=lambda: solvesTheProblem(opcionElegida))
     returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,)
 

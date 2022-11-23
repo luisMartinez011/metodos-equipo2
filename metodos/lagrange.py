@@ -1,35 +1,32 @@
 import numpy as np
-import numpy.polynomial.polynomial as poly
 from scipy.interpolate import lagrange
-import sympy as sym
+from random import randint
+from metodos.metodos_padre import Metodo_Padre
 
 
-class Lagrange:
+class Lagrange(Metodo_Padre):
+
+    def __init__(self):
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.x = np.array([2.2, 2.5, 2.8])
+            self.y = np.array([2.54, 2.82, 3.21])
+            self.problemImage = "Lagrange_1.png"
+        elif selectProblem == 2:
+            self.x = np.array([1, -3, 5, 7])
+            self.y = np.array([-2, 1, 2, -3])
+            self.problemImage = "Lagrange_2.png"
+        self.selectProblem = selectProblem
 
     @staticmethod
     def formula():
-        return "/Lagrange.png"
+        return "Lagrange.png"
 
     @staticmethod
     def methodName():
-        return "Lagrange.png"
+        return "Lagrange"
 
-    def solve():
-        roundValue = 9
-        x = np.array([0, 1, 4, 6])
-        y = np.array([2, 3, 18, 38])
-
-        n = 4
-        xp = 2
-        yp = 0
-        for i in range(n):
-
-            p = 1
-
-            for j in range(n):
-                if i != j:
-                    p = p * (xp - x[j])/(x[i] - x[j])
-
-            yp = yp + p * y[i]
-
-        return yp
+    def solve(self):
+        poly = lagrange(self.x, self.y)
+        result = np.round(poly(2.4), 9)
+        return result
