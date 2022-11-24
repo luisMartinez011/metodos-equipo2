@@ -14,7 +14,7 @@ class Integracion_cotasCerrada:
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "/Cotescerradas2.png"
+        return "/Cotescerradas.png"
 
     @staticmethod
     def methodName():

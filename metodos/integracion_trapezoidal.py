@@ -14,7 +14,7 @@ class Integracion_trapezoidal:
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "/Trapezoidal2.png"
+        return "/Trapezoidal.png"
 
     @staticmethod
     def methodName():

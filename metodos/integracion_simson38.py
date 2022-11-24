@@ -16,7 +16,7 @@ class Integracion_simpson38:
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "/3octavos_simpson2.png"
+        return "/3octavos_simpson.png"
 
     @staticmethod
     def methodName():

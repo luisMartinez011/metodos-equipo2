@@ -30,7 +30,7 @@ def Interfaz_del_Metodo(metodoElegido):
         titulo1 = tk.Label(
             ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        #Desc = tk.Label(
+        # Desc = tk.Label(
         #    ventanita, text=f"En este Metodo puedes asignar valores a las variables",
         #    fg="black")
         #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
@@ -256,7 +256,7 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo de la bisectriz",
-         "metodo": metodos.Bisectriz, 
+         "metodo": metodos.Bisectriz,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
@@ -357,15 +357,15 @@ def principal():
         {"nombre": "Euler Modificado", "metodo": metodos.Integracion_simpson38,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 2do Orden",
-            "metodo": metodos.Integracion_cotasCerrada, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta2, "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 3er Orden",
-            "metodo": metodos.Integracion_cotasAbiertas, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Runge Kutta 4to Orden: 1/3 Simpson", "metodo": metodos.Integracion_simpson38,
+            "metodo": metodos.Runge_Kutta3, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Runge Kutta 4to Orden: 1/3 Simpson", "metodo": metodos.Runge_Kutta4_13,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 4to Orden: 3/8 Simpson",
-            "metodo": metodos.Integracion_cotasCerrada, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta4_38, "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta Orden superior",
-            "metodo": metodos.Integracion_cotasAbiertas, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta_OS, "interfaz": Interfaz_del_Metodo},
     ]
 
     def combine_funcs(*funcs):
