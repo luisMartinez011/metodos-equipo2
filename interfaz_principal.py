@@ -278,7 +278,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Jacobi", "metodo": metodos.Interpolacion_lineal,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Raices con Polinomios", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Raices con Polinomios", "metodo": metodos.Polinomios,
             "interfaz": Interfaz_del_Metodo},
     ]
 
