@@ -245,14 +245,14 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo de la bisectriz",
-         "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Punto fijo", "metodo": metodos.Interpolacion_lineal,
+         "metodo": metodos.Bisectriz, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton - Rhapson", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Falsa posicion", "metodo": metodos.Interpolacion_lineal,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Secante", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Secante", "metodo": metodos.Secante,
             "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -269,11 +269,11 @@ def principal():
     infoMetodos3 = [
         {"nombre": "Montante", "metodo": metodos.Interpolacion_lineal,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Gauss-Jordan", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Gauss-Jordan", "metodo": metodos.GaussJordan,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Egaussiana,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Gauss Seidel", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Gauss Seidel", "metodo": metodos.GaussSeidel,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Jacobi", "metodo": metodos.Interpolacion_lineal,
             "interfaz": Interfaz_del_Metodo},

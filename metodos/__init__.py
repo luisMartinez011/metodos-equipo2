@@ -11,6 +11,8 @@ from metodos.secante import Secante
 
 
 from metodos.gauss_jordan import GaussJordan
+from metodos.eliminaciongaussiana import Egaussiana
+from metodos.gauss_seidel import GaussSeidel
 
 from metodos.integracion_trapezoidal import Integracion_trapezoidal
 from metodos.integracion_simson13 import Integracion_simpson13

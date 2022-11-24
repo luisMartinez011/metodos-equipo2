@@ -79,8 +79,8 @@ class GaussJordan:
 
         return self.x
 
-        def error(self):
-            i = 3;
+    def error(self):
+            i = 3
             pivotex = []
             for fila in self.AB1:
                 pivotex.append(fila[i])
