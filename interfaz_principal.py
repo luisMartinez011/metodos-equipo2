@@ -118,13 +118,15 @@ def Interfaz_del_Metodo(metodoElegido):
     def solvesTheProblem(opcionElegida):
         stop()
         solution = metodo.solve()
+        if len(solution) == 2:
+            solution = solution[0]
         selection = ""
         try:
             float(opcionElegida.get())
         except:
             print("")
         else:
-            if float(opcionElegida.get()) == metodo.solve():
+            if float(opcionElegida.get()) == solution:
                 selection = "Tu respuesta es correcta "
 
         try:
@@ -132,7 +134,7 @@ def Interfaz_del_Metodo(metodoElegido):
         except:
             print("")
         else:
-            if int(opcionElegida.get()) == metodo.solve():
+            if int(opcionElegida.get()) == solution:
                 selection = "Tu respuesta es correcta "
 
         if len(selection) == 0:
@@ -157,13 +159,22 @@ def Interfaz_del_Metodo(metodoElegido):
     def ShowChoice():
         return
 
-    for i in possibleSolutions:
-        tk.Radiobutton(ventanita,
-                       text=i,
-                       padx=20,
-                       variable=opcionElegida,
-                       command=ShowChoice,
-                       value=i).pack(anchor=tk.W)
+    if len(possibleSolutions[0]) == 2:
+        for i, j in possibleSolutions:
+            tk.Radiobutton(ventanita,
+                           text=f"{i} y {j}",
+                           padx=20,
+                           variable=opcionElegida,
+                           command=ShowChoice,
+                           value=i).pack(anchor=tk.W)
+    else:
+        for i in possibleSolutions:
+            tk.Radiobutton(ventanita,
+                           text=i,
+                           padx=20,
+                           variable=opcionElegida,
+                           command=ShowChoice,
+                           value=i).pack(anchor=tk.W)
 
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",
@@ -292,16 +303,16 @@ def principal():
         button.place(x=600, y=(120+25*p))
 
     infoMetodos4 = [
-        {"nombre": "Linea recta", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Linea recta", "metodo": metodos.Linea_recta,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica",
-            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cubica", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Cuadratica", "metodo": metodos.Cuadratica,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Lineal con funcion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Cubica", "metodo": metodos.Cubica,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Lineal con funcion", "metodo": metodos.Lineal_con_funcion,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Cuadratica con funcion",
-            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Cuadratica_con_funcion, "interfaz": Interfaz_del_Metodo},
     ]
 
     def combine_funcs(*funcs):
