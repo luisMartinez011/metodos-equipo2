@@ -1,61 +1,72 @@
-import pandas as pd
 import numpy as np
-import functools
+from random import randint
+from metodos.metodos_padre import Metodo_Padre
 
 
-class Newton_hacia_adelante:
+class Newton_hacia_adelante(Metodo_Padre):
 
     def __init__(self):
-        self.x = 3
-        xi = [1.7, 2.4, 3.1]
-        yi = [0.35, 0.87, 1.03]
-
-        self.coords = pd.DataFrame(list(zip(xi, yi)),
-                                   columns=["xi", "yi"])
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.x = np.array([2.2, 2.5, 2.8])
+            self.y_values = np.array([2.54, 2.82, 3.21])
+            self.value = 2.4
+            self.problemImage = "Newton_hacia_adelante_1.png"
+        elif selectProblem == 2:
+            x = np.array([45, 50, 55, 60])
+            self.x = x
+            self.y_values = np.sin(np.deg2rad(x))
+            self.value = 52
+            self.problemImage = "Newton_hacia_adelante_2.png"
+        self.selectProblem = selectProblem
 
     @staticmethod
     def formula():
-        return "/Newton_hacia_adelante.png"
+        return "Newton_hacia_adelante.png"
 
     @staticmethod
     def methodName():
         return "Newton hacia adelante"
 
     def solve(self):
-        roundValue = 9
-        save_H_Values = []
-        for i in range(len(self.coords.xi)):
-            if i == 0:
-                continue
-            save_H_Values.append(
-                np.round(self.coords.xi[i] - self.coords.xi[i-1], roundValue))
+        x = self.x
+        n = len(x)
 
-        is_H_Unique = save_H_Values.count(
-            save_H_Values[0]) == len(save_H_Values)
-        if (is_H_Unique):
-            h = save_H_Values[0]
-        else:
-            print("No tiene intervalos uniformes h")
+        def u_cal(u, n):
 
-        s = np.round((self.x - self.coords.xi[0]) / h, roundValue)
+            temp = u
+            for i in range(1, n):
+                temp = temp * (u - i)
+            return temp
 
-        s0 = 1
-        s1 = s
-        s2 = s*(s-1) / np.math.factorial(2)
+        def fact(n):
+            f = 1
+            for i in range(2, n + 1):
+                f *= i
+            return f
 
-        delta = []
+        y = [[0 for i in range(n)]
+             for j in range(n)]
 
-        def agregarDelta(x, y):
-            delta.append(np.round((y-x), roundValue))
-            return y
+        for i in range(n):
+            y[i][0] = self.y_values[i]
 
-        for i in range(len(self.coords.yi)-1):
-            if i == 0:
-                functools.reduce(agregarDelta, self.coords.yi)
-            else:
-                savePreviousDeltas = list(delta)
-                functools.reduce(agregarDelta, savePreviousDeltas)
+        for i in range(1, n):
+            for j in range(n - i):
+                y[j][i] = y[j + 1][i - 1] - y[j][i - 1]
 
-        g_x = self.coords.yi[0] * s0 + delta[0]*s1 + delta[2] * s2
-        g_x = np.round(g_x, roundValue)
-        return g_x
+        # Displaying the forward difference table
+        # for i in range(n):
+        # 	print(x[i], end = "\t");
+        # 	for j in range(n - i):
+        # 		print(y[i][j], end = "\t");
+        # 	print("");
+
+        # initializing u and sum
+        sum = y[0][0]
+        u = (self.value - x[0]) / (x[1] - x[0])
+        for i in range(1, n):
+            sum = sum + (u_cal(u, i) * y[0][i]) / fact(i)
+
+        result = sum
+        return result

@@ -48,27 +48,15 @@ def Interfaz_del_Metodo(metodoElegido):
     # this function generates a formula image
 
     def generateImages():
-        canvas = Canvas(
-            ventanita,
-            width=500,
-            height=300
-        )
-        canvas.pack()
         global formulaIMG
-        formulaIMG = ImageTk.PhotoImage(
-            Image.open(f'metodos/img/{metodo.formula()}'))
+        img = Image.open(f'metodos/img/{metodo.formula()}')
+        formulaIMG = ImageTk.PhotoImage(img)
 
-        canvas.create_image(
-            10,
-            10,
-            anchor=NW,
-            image=formulaIMG
-        )
-        Label(
-            text=f'width: {formulaIMG.width()} height: {formulaIMG.height()}'
-        ).pack()
+        disp_img = Label(ventanita, image=formulaIMG)
+        disp_img.pack(pady=20)
 
     # Prints an image of the problem in the window
+
     def printProblemImage():
         canvas = Canvas(
             ventanita,
@@ -185,10 +173,10 @@ def Interfaz_del_Metodo(metodoElegido):
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
         principal(), ventanita.destroy()])
-    botonMenu.pack(padx=50, pady=10, ipadx=1, ipady=1)
+    botonMenu.pack(padx=5, pady=5, ipadx=1, ipady=1)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.pack(padx=50, pady=10)
+    botonCerrar.pack(padx=5, pady=5)
 
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
@@ -242,7 +230,7 @@ def principal():
         {"nombre": "Lagrange", "metodo": metodos.Lagrange,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton con diferencias divididas",
-            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Newton_Diferencias_Divididas, "interfaz": Interfaz_del_Metodo},
     ]
 
     def combine_funcs(*funcs):
