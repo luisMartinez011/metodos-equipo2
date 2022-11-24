@@ -5,7 +5,7 @@ from random import randint
 from math import *
 from metodos.metodos_padre import Metodo_Padre
 
-# tiene un error esta funcion, modificar
+# eee
 
 
 class Euler_Modificado(Metodo_Padre):

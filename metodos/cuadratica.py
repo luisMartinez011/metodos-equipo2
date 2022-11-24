@@ -32,10 +32,10 @@ class Cuadratica(Metodo_Padre):
     def solve(self):
         x = self.x
         y = self.y
-        result = np.poly1d(np.polyfit(x,
-                                      y, 2))
+        a, b, c = np.poly1d(np.polyfit(x,
+                                       y, 2))
         # result(set x value)
-        return result
+        return a, b, c
 
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b, c = self.solve()
