@@ -4,6 +4,22 @@ import functools
 from random import randint
 from math import *
 
+class Euler_Modificado:
+    @staticmethod
+    def formula():
+        return "/Euler_Modificado.png"
+
+    @staticmethod
+    def methodName():
+        return "EulerModificado"
+    
+def generatePossibleSolutions(self):
+        solution = self.solve()
+        # change this value if you want customized solutions
+        # (optional) if your solution is an integer number, change this value to an integer
+        standard_deviation = 0.5
+        fake_solutions = 4
+
 def f(t,y):
     func=t*exp(3*t)-2*y
     return func 
