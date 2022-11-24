@@ -15,7 +15,7 @@ class Newton_hacia_atras(Metodo_Padre):
         elif selectProblem == 2:
             self.x = np.array([1891, 1901, 1911, 1921, 1931])
             self.y_values = np.array([46, 66, 81, 93, 101])
-            self.value = 2.4
+            self.value = 1925
             self.problemImage = "Newton_hacia_atras_2.png"
         self.selectProblem = selectProblem
 
