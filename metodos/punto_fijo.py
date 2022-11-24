@@ -6,22 +6,21 @@ from math import *
 
 
 class Punto_Fijo:
-    
-    
+
     def __init__(self):
         self.tol = 10**(-5)
         self.a = 0
-        self.x = 0 
+        self.x = 0
         self.m = 0
         selectProblem = randint(1, 2)
-        
+
     @staticmethod
     def formula():
         return "Ayuda_PuntoFijo.png"
 
     @staticmethod
     def methodName():
-        return "Punto_Fijo"
+        return "Punto Fijo"
 
     def func(self):
         return exp(-self.x)

@@ -380,7 +380,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler hacia atras", "metodo": metodos.Integracion_simpson13,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler Modificado", "metodo": metodos.Integracion_simpson38,
+        {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 2do Orden",
             "metodo": metodos.Runge_Kutta2, "interfaz": Interfaz_del_Metodo},
