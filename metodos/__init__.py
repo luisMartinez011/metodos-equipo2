@@ -9,9 +9,14 @@ from metodos.punto_fijo import Punto_Fijo
 from metodos.metodo_bisectriz import Bisectriz
 from metodos.raphson import Newton_Raphson
 from metodos.secante import Secante
+from metodos.fposicion import Falsa_Posicion
 
 
 from metodos.gauss_jordan import GaussJordan
+from metodos.eliminaciongaussiana import Egaussiana
+from metodos.gauss_seidel import GaussSeidel
+from metodos.polinomios import Polinomios
+from metodos.jacobi import Jacobi
 
 from metodos.linea_recta import Linea_recta
 from metodos.cuadratica import Cuadratica

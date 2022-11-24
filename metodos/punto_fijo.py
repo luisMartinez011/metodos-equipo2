@@ -21,7 +21,7 @@ class Punto_Fijo:
 
     @staticmethod
     def methodName():
-        return "Punto Fijo"
+        return "Punto_Fijo"
 
     def func(self):
         return exp(-self.x)
@@ -35,6 +35,8 @@ class Punto_Fijo:
             aux = self.m
             self.m = self.func(self.a)
             k = k+1
+        error = self.error()
+        return error
 
     def error(self):
         e = self.a - self.m

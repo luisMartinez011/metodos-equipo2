@@ -68,7 +68,8 @@ class Bisectriz:
                 self.a = self.m
             self.k = self.k + 1;
         #devuelve el intervalo
-        return self.a , self.b
+        retorno = str('[' , self.a, ' ,' ,self.b,']')
+        return retorno
 
     def error(self):
         error = format(self.m1 - self.m)

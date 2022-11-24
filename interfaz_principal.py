@@ -30,10 +30,10 @@ def Interfaz_del_Metodo(metodoElegido):
         titulo1 = tk.Label(
             ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        Desc = tk.Label(
-            ventanita, text=f"En este Metodo puedes asignar valores a las variables",
-            fg="black")
-        Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        #Desc = tk.Label(
+        #    ventanita, text=f"En este Metodo puedes asignar valores a las variables",
+        #    fg="black")
+        #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
             ventanita, text=f"La formula de para resolver este metodo es:",
             fg="black")
@@ -256,14 +256,15 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo de la bisectriz",
-         "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Punto fijo", "metodo": metodos.Interpolacion_lineal,
+         "metodo": metodos.Bisectriz, 
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton - Rhapson", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Falsa posicion", "metodo": metodos.Interpolacion_lineal,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Secante", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Secante", "metodo": metodos.Secante,
             "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -280,15 +281,15 @@ def principal():
     infoMetodos3 = [
         {"nombre": "Montante", "metodo": metodos.Interpolacion_lineal,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Gauss-Jordan", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Gauss-Jordan", "metodo": metodos.GaussJordan,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Egaussiana,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Gauss Seidel", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Gauss Seidel", "metodo": metodos.GaussSeidel,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Jacobi", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Jacobi", "metodo": metodos.Jacobi,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Raices con Polinomios", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Raices con Polinomios", "metodo": metodos.Polinomios,
             "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -297,7 +298,7 @@ def principal():
             for f in funcs:
                 f(*args, **kwargs)
         return combined_func
-    for p in range(5):
+    for p in range(6):
         button = tk.Button(vprincipal, text=f"#{p+1}: {infoMetodos3[p]['nombre']}",
                            command=lambda metodo=infoMetodos3[p]["metodo"]: infoMetodos3[p]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=600, y=(120+25*p))

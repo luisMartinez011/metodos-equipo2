@@ -20,6 +20,7 @@ class Secante():
         self.fx1 = 0
         self.fx0 = 0
         self.x= 0
+        self.err = 0    
     @staticmethod
     def formula():
         return "Secante.png"
@@ -49,9 +50,10 @@ class Secante():
             self.x1 = nx
         avx0 = format(self.x0, '0.9f')
         avx1 = format(self.x1, '0.9f')
-        return avx0, avx1
+        error = self.error()
+        return error
     
     
     def error(self):
-        err = abs(self.x1 - self.x0)
-        return err
+        self.err = abs(self.x1 - self.x0)
+        return self.err
