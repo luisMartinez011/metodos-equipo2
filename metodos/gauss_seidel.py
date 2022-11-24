@@ -91,8 +91,8 @@ class GaussSeidel:
         c = self.x[2]
         x = self.X
         alter = self.verificar
-
         return x , alter
+        
     def error(self):
         alter = self.verificar
         return alter
