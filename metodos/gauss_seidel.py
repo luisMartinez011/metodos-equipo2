@@ -12,17 +12,15 @@ class GaussSeidel :
         return "Gauss_Seidel"
 
     def generatePossibleSolutions(self):
-        solution, val = self.solve()
+        a,b,c,alter = self.solve()
         # change this value if you want customized solutions
         # (optional) if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
         fake_solutions = 4
 
         rng = np.random.default_rng()
-        for r in range(len(val)):
-            s = rng.normal(val[r], standard_deviation, fake_solutions)
-            r = r + 1
-        s = np.append(s, val)
+        s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
+        s = np.append(s,[[a,b,c,alter]], axis=0)
         rng.shuffle(s)
         return s
 
@@ -86,10 +84,12 @@ class GaussSeidel :
         if(k>self.itermax):
             self.X = 0
         self.verificar = np.dot(self.A,self.X)
+        a = self.x[0]
+        b = self.x[1]
+        c = self.x[2]
         x = self.X
-        alter = self.verificar
-
-        return x , alter
+        alter = format(suma, '0.9f')
+        return a,b,c,alter
     def error(self):
         alter = self.verificar
         return alter        

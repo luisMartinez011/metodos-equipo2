@@ -11,19 +11,17 @@ class Jacobi:
         return "Jacobi"
 
     def generatePossibleSolutions(self):
-        solution, val = self.solve()
-        # change this value if you want customized solutions
-        # (optional) if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.5
-        fake_solutions = 4
+            a,b,c,fact = self.solve()
+            # change this value if you want customized solutions
+            # (optional) if your solution is an integer number, change this value to an integer
+            standard_deviation = 0.5
+            fake_solutions = 4
 
-        rng = np.random.default_rng()
-        for r in range(len(val)):
-            s = rng.normal(val[r], standard_deviation, fake_solutions)
-            r = r + 1
-        s = np.append(s, val)
-        rng.shuffle(s)
-        return s
+            rng = np.random.default_rng()
+            s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
+            s = np.append(s,[[a,b,c,fact]], axis=0)
+            rng.shuffle(s)
+            return s
 
     def __init__(self):
         selectProblem = randint(1, 2)
@@ -58,6 +56,8 @@ class Jacobi:
                     self.x1[3] = (self.B[3] - self.A[3,0] * self.x0[0] - self.A[3,1] * self.x0[1] - self.A[3,2] * self.x0[2]) / self.A[3,3]                    
                     k = k + 1
                 error = abs(self.x1 - self.x0)
-                x = self.x1 #numeros de la ecuacion
-                return error
+                a = self.x1[0] #numeros de la ecuacion
+                b = self.x1[1]
+                c = self.x1[2]
+                return a,b,c,error
                 
