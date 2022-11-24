@@ -7,7 +7,7 @@ class Linea_recta:
 
     def __init__(self):
         selectProblem = randint(1, 2)
-        self.x = x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
+        self.x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
         self.y = np.array([2.5, 2.7, 3.7, 5.2, 6.0, 8.3])
         self.problemImage = "Linea_recta_1.png"
 
@@ -26,7 +26,7 @@ class Linea_recta:
         m, c = np.linalg.lstsq(A, y, rcond=None)[0]
         return m, c
 
-    # override this method to generate two anser per option
+    # override this method to generate two anwsers per option
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b = self.solve()
 

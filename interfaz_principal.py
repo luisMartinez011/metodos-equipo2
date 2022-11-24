@@ -118,6 +118,7 @@ def Interfaz_del_Metodo(metodoElegido):
     def solvesTheProblem(opcionElegida):
         stop()
         solution = metodo.solve()
+        solutionToPrint = metodo.solve()
         selection = ""
         try:
             len(possibleSolutions[0])
@@ -144,7 +145,7 @@ def Interfaz_del_Metodo(metodoElegido):
 
         if len(selection) == 0:
             selection = "Respuesta incorrecta, la respuesta correcta era: " + \
-                str(solution)
+                str(solutionToPrint)
 
         resultado = tk.Label(
             ventanita, text=selection,
@@ -174,13 +175,32 @@ def Interfaz_del_Metodo(metodoElegido):
                            command=ShowChoice,
                            value=i).pack(anchor=tk.W)
     else:
-        for i, j in possibleSolutions:
-            tk.Radiobutton(ventanita,
-                           text=f"{i} y {j}",
-                           padx=20,
-                           variable=opcionElegida,
-                           command=ShowChoice,
-                           value=i).pack(anchor=tk.W)
+        if len(possibleSolutions[0]) == 2:
+            for i, j in possibleSolutions:
+                tk.Radiobutton(ventanita,
+                               text=f"{i} y {j}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
+        elif len(possibleSolutions[0]) == 3:
+            for i, j, k in possibleSolutions:
+                print(i, j, k)
+                tk.Radiobutton(ventanita,
+                               text=f"{i}, {j}, {k}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
+        elif len(possibleSolutions[0]) == 4:
+            for i, j, k, l in possibleSolutions:
+                print(i, j, k, l)
+                tk.Radiobutton(ventanita,
+                               text=f"{i}, {j}, {k}, {l}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
 
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",

@@ -1,12 +1,11 @@
 import numpy as np
 from random import randint
-from metodos.metodos_padre import Metodo_Padre
 
 
 class Egaussiana:
     @staticmethod
     def formula():
-        return "Egaussiana.png"
+        return "/Egaussiana.png"
 
     @staticmethod
     def methodName():
