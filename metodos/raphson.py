@@ -11,15 +11,9 @@ class Newton_Raphson:
     def __init__(self):
         self.tol = 10**(-5)
         self.x = 0
-        selectProblem = randint(1, 2)
-        if selectProblem == 1:
-            self.x1 = 1
-            self.indi = 1
-            #self.problemImage = "Bisectriz_1"
-        elif selectProblem == 2:
-            self.self.x1 = 2
-            self.indi = 2
-            #self.problemImage = "Bisectriz_1"
+        self.x1 = 1
+        self.indi = 1
+        self.problemImage = "rapson1.png"
         self.x1 = 0
         self.k = 0  
         self.n = 100    
@@ -31,19 +25,21 @@ class Newton_Raphson:
     def methodName():
         return "Newton Raphson"
 
-    def f(self):
+    def f(self,x):
         #aqui van las funciones 
-        print ('fuck')
-    def df(self):
+        x = 0.8*pow(x,2) + x - 3
+        return x
+    def df(self,dx):
         #aqui va la derivada de la funcion
-        print ('fuck')
+        dx = (1.6* dx) +1 
+        return dx
 
     def solve(self):
 
         for self.k in range(self.n):
             self.x1 = self.x0-self.f(self.x0)/self.df(self.x0)
             if (abs(self.x1-self.x0) < self.tol):
-                return self.x0, self.x1
+                return self.x1 #self.x0,
             self.x0 = self.x1
             aux = abs(self.x1-self.x0)
 

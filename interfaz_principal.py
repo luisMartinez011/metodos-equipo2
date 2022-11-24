@@ -30,10 +30,10 @@ def Interfaz_del_Metodo(metodoElegido):
         titulo1 = tk.Label(
             ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        Desc = tk.Label(
-            ventanita, text=f"En este Metodo puedes asignar valores a las variables",
-            fg="black")
-        Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
+        #Desc = tk.Label(
+        #    ventanita, text=f"En este Metodo puedes asignar valores a las variables",
+        #    fg="black")
+        #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
             ventanita, text=f"La formula de para resolver este metodo es:",
             fg="black")
@@ -245,7 +245,8 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo de la bisectriz",
-         "metodo": metodos.Bisectriz, "interfaz": Interfaz_del_Metodo},
+         "metodo": metodos.Bisectriz, 
+            "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
