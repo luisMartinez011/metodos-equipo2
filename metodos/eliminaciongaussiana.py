@@ -12,17 +12,17 @@ class Egaussiana:
         return "Eliminacion_Gaussiana"
 
     def generatePossibleSolutions(self):
-        solution = self.solve()
-        # change this value if you want customized solutions
-        # (optional) if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.5
-        fake_solutions = 4
+            a,b,c,fact = self.solve()
+            # change this value if you want customized solutions
+            # (optional) if your solution is an integer number, change this value to an integer
+            standard_deviation = 0.5
+            fake_solutions = 4
 
-        rng = np.random.default_rng()
-        s = rng.normal(solution, standard_deviation, fake_solutions)
-        s = np.append(s, solution)
-        rng.shuffle(s)
-        return s
+            rng = np.random.default_rng()
+            s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
+            s = np.append(s,[[a,b,c,fact]], axis=0)
+            rng.shuffle(s)
+            return s
 
     def __init__(self):
         selectProblem = randint(1, 2)
@@ -54,7 +54,13 @@ class Egaussiana:
         for i in range(self.orden, 0, -1):
             for j in range(i, self.orden):
                 self.suma = self.suma + self.matriz[i-1][j] * self.x[j]
-            # Valores de las variables
-            self.x[i-1] = ((self.matriz[i-1][self.orden] -
-                           self.suma)/self.matriz[i-1][i-1])
-        return self.x, self.suma
+            #Valores de las variables
+            self.x[i-1]= ((self.matriz[i-1][self.orden]-self.suma)/self.matriz[i-1][i-1])
+        factor = self.suma
+        a = self.x[0]
+        b = self.x[1]
+        c = self.x[2]
+        return a,b,c,factor
+
+
+        

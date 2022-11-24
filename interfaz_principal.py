@@ -281,6 +281,9 @@ def principal():
         button.place(x=10, y=(120+25*y))
 
     infoMetodos2 = [
+        {"nombre": "Metodo Grafico",
+         "metodo": metodos.Grafico, 
+            "interfaz": Interfaz_del_Metodo},
         {"nombre": "Metodo de la bisectriz",
          "metodo": metodos.Bisectriz,
             "interfaz": Interfaz_del_Metodo},
