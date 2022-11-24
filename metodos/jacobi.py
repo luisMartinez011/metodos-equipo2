@@ -34,22 +34,6 @@ class Jacobi:
                            [-19.3],
                            [71.4]])
         self.problemImage = "jacobi1.png"
-        if selectProblem == 1:
-            self.A = np.array([[3, -0.1, -0.2],
-                               [0.1, 7, -0.3],
-                               [0.3, -0.2, 10]])
-            self.B = np.array([[7.85],
-                               [-19.3],
-                               [71.4]])
-            self.problemImage = "jacobi1.png"
-        elif selectProblem == 2:
-            self.A = np.array([[1, -3, 5],
-                               [8, -1, -1],
-                               [-2, 4, 1]])
-            self.B = np.array([[5],
-                               [8],
-                               [4]])
-            self.problemImage = "GaussSeidel2.png"
         self.x0 = 0
         self.x1 = 0
         self.tol = 0.001

@@ -15,6 +15,7 @@ class GaussJordan(Metodo_Padre):
 
     def __init__(self):
         selectProblem = randint(1, 2)
+        selectProblem = 2
         if selectProblem == 1:
             self.A = np.array([[4, 2, 5],
                                [2, 5, 8],

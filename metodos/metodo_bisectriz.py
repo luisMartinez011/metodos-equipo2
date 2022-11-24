@@ -35,15 +35,15 @@ class Bisectriz:
         return "Bisectriz.png"
 
     def generatePossibleSolutions(self):
-        solution = self.solve()
+        a,b,e = self.solve()
         # change this value if you want customized solutions
         # if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
         fake_solutions = 4
 
         rng = np.random.default_rng()
-        s = rng.normal(solution, standard_deviation, fake_solutions)
-        s = np.append(s, solution)
+        s = rng.normal(e, standard_deviation, fake_solutions)
+        s = np.append(s, [[a,b,e]], axis=0)
         rng.shuffle(s)
         return s
 
@@ -68,8 +68,10 @@ class Bisectriz:
                 self.a = self.m
             self.k = self.k + 1
         # devuelve el intervalo
-        retorno = str('[', self.a, ' ,', self.b, ']')
-        return retorno
+        retornoa = self.a
+        retornob = self.b
+        error = self.error()
+        return retornoa, retornob , error
 
     def error(self):
         error = format(self.m1 - self.m)

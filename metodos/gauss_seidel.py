@@ -28,6 +28,7 @@ class GaussSeidel:
 
     def __init__(self):
         selectProblem = randint(1, 2)
+        selectProblem = 1
         if selectProblem == 1:
             self.A = np.array([[3, -0.1, -0.2],
                                [0.1, 7, -0.3],

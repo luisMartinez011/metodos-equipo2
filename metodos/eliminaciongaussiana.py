@@ -27,6 +27,7 @@ class Egaussiana:
     def __init__(self):
         selectProblem = randint(1, 2)
         self.orden = 0
+        selectProblem = 2
         if selectProblem == 1:
             self.matriz = [[3, 2, 3, 3], [1, 3, 1, -6], [5, 1, 3, 12]]
             self.problemImage = "Eliminacion1.png"
