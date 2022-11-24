@@ -7,7 +7,19 @@ from math import *
 
 
 class Newton_Raphson:
-    
+    def generatePossibleSolutions(self):
+        solution = self.solve()
+        # change this value if you want customized solutions
+        # (optional) if your solution is an integer number, change this value to an integer
+        standard_deviation = 0.5
+        fake_solutions = 4
+
+        rng = np.random.default_rng()
+        s = rng.normal(solution, standard_deviation, fake_solutions)
+        s = np.append(s, solution)
+        rng.shuffle(s)
+        return s
+        
     def __init__(self):
         self.tol = 10**(-5)
         self.x = 0
@@ -41,7 +53,8 @@ class Newton_Raphson:
             if (abs(self.x1-self.x0) < self.tol):
                 return self.x1 #self.x0,
             self.x0 = self.x1
-            aux = abs(self.x1-self.x0)
+            aux = format(abs(self.x1-self.x0), '0.9f')
+            return aux
 
     def error(self):
         ext = abs(self.x1-self.x0)
