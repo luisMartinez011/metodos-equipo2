@@ -118,9 +118,14 @@ def Interfaz_del_Metodo(metodoElegido):
     def solvesTheProblem(opcionElegida):
         stop()
         solution = metodo.solve()
-        if len(solution) == 2:
-            solution = solution[0]
         selection = ""
+        try:
+            len(possibleSolutions[0])
+        except:
+            selection = ""
+        else:
+            solution = solution[0]
+
         try:
             float(opcionElegida.get())
         except:
@@ -158,19 +163,20 @@ def Interfaz_del_Metodo(metodoElegido):
     # Don´t remove this function, if you remove it, the program isn´t going to work
     def ShowChoice():
         return
-
-    if len(possibleSolutions[0]) == 2:
-        for i, j in possibleSolutions:
+    try:
+        len(possibleSolutions[0])
+    except:
+        for i in possibleSolutions:
             tk.Radiobutton(ventanita,
-                           text=f"{i} y {j}",
+                           text=i,
                            padx=20,
                            variable=opcionElegida,
                            command=ShowChoice,
                            value=i).pack(anchor=tk.W)
     else:
-        for i in possibleSolutions:
+        for i, j in possibleSolutions:
             tk.Radiobutton(ventanita,
-                           text=i,
+                           text=f"{i} y {j}",
                            padx=20,
                            variable=opcionElegida,
                            command=ShowChoice,

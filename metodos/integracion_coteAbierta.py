@@ -1,7 +1,8 @@
 import numpy as np
+from metodos.metodos_padre import Metodo_Padre
 
 
-class Integracion_cotasAbiertas:
+class Integracion_cotasAbiertas(Metodo_Padre):
 
     def __init__(self):
         self.a = -2
@@ -11,11 +12,12 @@ class Integracion_cotasAbiertas:
         self.h = ((self.b - self.a)/(self.n + 2))
 
         self.x = 4
+        self.problemImage = "CotesAbiertas2.png"
 
     # returns a formula´s string
     @staticmethod
     def formula():
-        return "/CotesAbiertas.png"
+        return "CotesAbiertas.png"
 
     @staticmethod
     def methodName():
@@ -23,16 +25,16 @@ class Integracion_cotasAbiertas:
 
     # solves the problem
     def solve(self):
-       
-        ValorI = (self.h)* (self.ah)
-        f_a = (0 *( (3*(self.a)**3)-10))
-        f_b = (0 *( (3*(self.b)**3)-10))
 
-        f_h1 = (11 *((3*  ( self.a + (self.h*1))**3) -10))
-        f_h2 = (-14 *((3*  ( self.a + (self.h*2))**3) -10))
-        f_h3 = (26 *((3*  ( self.a + (self.h*3))**3) -10))
-        f_h4 = (-14 *((3*  ( self.a + (self.h*4))**3) -10))
-        f_h5 = (11 *((3*  ( self.a + (self.h*5))**3) -10))
+        ValorI = (self.h) * (self.ah)
+        f_a = (0 * ((3*(self.a)**3)-10))
+        f_b = (0 * ((3*(self.b)**3)-10))
+
+        f_h1 = (11 * ((3 * (self.a + (self.h*1))**3) - 10))
+        f_h2 = (-14 * ((3 * (self.a + (self.h*2))**3) - 10))
+        f_h3 = (26 * ((3 * (self.a + (self.h*3))**3) - 10))
+        f_h4 = (-14 * ((3 * (self.a + (self.h*4))**3) - 10))
+        f_h5 = (11 * ((3 * (self.a + (self.h*5))**3) - 10))
 
         f_suma = (f_h1 + f_h2 + f_h3 + f_h4 + f_h5)
 
@@ -41,10 +43,3 @@ class Integracion_cotasAbiertas:
         self.g_x = g_x
 
         return g_x
-
-    # return error margin
-    def error(self):
-        f_x = np.log(self.x)
-        error = abs(f_x - self.g_x)
-
-        return error

@@ -7,8 +7,9 @@ class Runge_Kutta2:
         self.y0 = 1
         self.t0 = 0
         self.h = 0.6
-        
+
         self.x = 4
+        self.problemImage = "Runge_Kutta22.png"
 
     # returns a formula´s string
     @staticmethod
@@ -17,7 +18,7 @@ class Runge_Kutta2:
 
     @staticmethod
     def methodName():
-        return "Runge Kutta 2 Orden (RESULTADO DEL LIBRO INCORRECTO (k2)"
+        return "Runge Kutta 2 Orden"
 
     def generatePossibleSolutions(self):
         solution = self.solve()
@@ -32,30 +33,22 @@ class Runge_Kutta2:
         rng.shuffle(s)
         return s
 
-
-
     # solves the problem
+
     def solve(self):
 
-        k1 = self.h * ( (2* (self.y0 * self.t0)) -1  )
-        k2 = self.h * ( (2 * (self.t0 + self.h) * (self.y0 + k1)) -1)
-        y1 = self.y0 + (1/2 * (k1 + k2) ) 
-	
+        k1 = self.h * ((2 * (self.y0 * self.t0)) - 1)
+        k2 = self.h * ((2 * (self.t0 + self.h) * (self.y0 + k1)) - 1)
+        y1 = self.y0 + (1/2 * (k1 + k2))
+
         t1 = self.t0 + 1
-	
-        k12 = self.h * ( (2* (y1 * t1)) -1  )
-        k22 = self.h * ( (2 * (t1 + self.h) * (y1 + k12)) -1)
-        y2 = y1 + (1/2 * (k12 + k22) ) 
+
+        k12 = self.h * ((2 * (y1 * t1)) - 1)
+        k22 = self.h * ((2 * (t1 + self.h) * (y1 + k12)) - 1)
+        y2 = y1 + (1/2 * (k12 + k22))
 
         g_x = y2
 
         self.g_x = g_x
 
         return g_x
-
-    # return error margin
-    def error(self):
-        f_x = np.log(self.x)
-        error = abs(f_x - self.g_x)
-
-        return error
