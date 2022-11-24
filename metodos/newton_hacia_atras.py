@@ -62,3 +62,4 @@ class Newton_hacia_atras(Metodo_Padre):
         for i in range(1, n):
             sum = sum + (u_cal(u, i) * y[n - 1][i]) / fact(i)
         result = sum
+        return result
