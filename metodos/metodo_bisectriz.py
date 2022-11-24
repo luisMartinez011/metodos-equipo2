@@ -7,24 +7,32 @@ from math import *
 
 
 class Bisectriz:
+
+    @staticmethod
+    def methodName():
+        return "Metodo Bisectriz"
+
     def __init__(self):
         self.m1 = 0
         self.k = 0
         self.m = 0
         self.x = 0
         self.tol = pow(10, -3)
-        selectProblem = randint(1, 2)
+        selectProblem = 1
         if selectProblem == 1:
             self.a = 0
             self.b = 1
-            self.formula = 1
-            self.problemImage = "Bisectriz_1"
-        elif selectProblem == 2:
-            self.a = 0
-            self.b = 1
-            self.formula = 2
-            self.problemImage = "Bisectriz_2"
-                
+            self.formulaElegida = 1
+            self.problemImage = "Bisectriz_1.png"
+        # elif selectProblem == 2:
+        #     self.a = 0
+        #     self.b = 1
+        #     self.formulaElegida = 2
+        #     self.problemImage = "Bisectriz_2"
+
+    @staticmethod
+    def formula():
+        return "Bisectriz.png"
 
     def generatePossibleSolutions(self):
         solution = self.solve()
@@ -41,34 +49,26 @@ class Bisectriz:
 
     @staticmethod
     def extra(self, x):
-        #definir formulas
-        if self.formula == 1: 
-            return cos(x) - pow(x,3);
-        else: 
-            return pow(x,3) - 6.5*x + 2; 
-
-    @staticmethod
-    def formula():
-        return "Bisectriz.png"
-
-    @staticmethod
-    def methodName():
-        return "Metodo Bisectriz"
+        # definir formulas
+        if self.formulaElegida == 1:
+            return cos(x) - pow(x, 3)
+        else:
+            return pow(x, 3) - 6.5*x + 2
 
     def solve(self):
         self.m1 = self.a
         self.m = self.b
         self.k = 0
-        while(abs(self.m1 - self.m) > self.tol):
+        while (abs(self.m1 - self.m) > self.tol):
             self.m1 = self.m
-            self.m = (self.a + self.b) / 2;
-            if(self.extra(self.a)* self.extra(self.m) < 0): #cambia el singo en este intervalos
+            self.m = (self.a + self.b) / 2
+            if (self.extra(self.a) * self.extra(self.m) < 0):  # cambia el singo en este intervalos
                 self.b = self.m
-            if(self.extra(self.m)* self.extra(self.b) < 0): #cambia el signo en este intervalo   
+            if (self.extra(self.m) * self.extra(self.b) < 0):  # cambia el signo en este intervalo
                 self.a = self.m
-            self.k = self.k + 1;
-        #devuelve el intervalo
-        retorno = str('[' , self.a, ' ,' ,self.b,']')
+            self.k = self.k + 1
+        # devuelve el intervalo
+        retorno = str('[', self.a, ' ,', self.b, ']')
         return retorno
 
     def error(self):

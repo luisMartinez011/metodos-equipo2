@@ -18,8 +18,22 @@ from metodos.gauss_seidel import GaussSeidel
 from metodos.polinomios import Polinomios
 from metodos.jacobi import Jacobi
 
+from metodos.linea_recta import Linea_recta
+from metodos.cuadratica import Cuadratica
+from metodos.cubica import Cubica
+from metodos.lineal_con_funcion import Lineal_con_funcion
+from metodos.cuadratica_con_funcion import Cuadratica_con_funcion
+
+
 from metodos.integracion_trapezoidal import Integracion_trapezoidal
 from metodos.integracion_simson13 import Integracion_simpson13
 from metodos.integracion_simson38 import Integracion_simpson38
 from metodos.integracion_coteCerrada import Integracion_cotasCerrada
 from metodos.integracion_coteAbierta import Integracion_cotasAbiertas
+
+from metodos.euler_modificado import Euler_Modificado
+from metodos.rungeKutta2 import Runge_Kutta2
+from metodos.rungeKutta3 import Runge_Kutta3
+from metodos.rungeKutta4_13 import Runge_Kutta4_13
+from metodos.rungeKutta4_38 import Runge_Kutta4_38
+from metodos.rungeKutta_OS import Runge_Kutta_OS

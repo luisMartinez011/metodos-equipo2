@@ -30,7 +30,7 @@ def Interfaz_del_Metodo(metodoElegido):
         titulo1 = tk.Label(
             ventanita, text=f"({metodo.methodName()})", bg="green", fg="black")
         titulo1.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
-        #Desc = tk.Label(
+        # Desc = tk.Label(
         #    ventanita, text=f"En este Metodo puedes asignar valores a las variables",
         #    fg="black")
         #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
@@ -118,13 +118,21 @@ def Interfaz_del_Metodo(metodoElegido):
     def solvesTheProblem(opcionElegida):
         stop()
         solution = metodo.solve()
+        solutionToPrint = metodo.solve()
         selection = ""
+        try:
+            len(possibleSolutions[0])
+        except:
+            selection = ""
+        else:
+            solution = solution[0]
+
         try:
             float(opcionElegida.get())
         except:
             print("")
         else:
-            if float(opcionElegida.get()) == metodo.solve():
+            if float(opcionElegida.get()) == solution:
                 selection = "Tu respuesta es correcta "
 
         try:
@@ -132,12 +140,12 @@ def Interfaz_del_Metodo(metodoElegido):
         except:
             print("")
         else:
-            if int(opcionElegida.get()) == metodo.solve():
+            if int(opcionElegida.get()) == solution:
                 selection = "Tu respuesta es correcta "
 
         if len(selection) == 0:
             selection = "Respuesta incorrecta, la respuesta correcta era: " + \
-                str(solution)
+                str(solutionToPrint)
 
         resultado = tk.Label(
             ventanita, text=selection,
@@ -156,14 +164,43 @@ def Interfaz_del_Metodo(metodoElegido):
     # Don´t remove this function, if you remove it, the program isn´t going to work
     def ShowChoice():
         return
-
-    for i in possibleSolutions:
-        tk.Radiobutton(ventanita,
-                       text=i,
-                       padx=20,
-                       variable=opcionElegida,
-                       command=ShowChoice,
-                       value=i).pack(anchor=tk.W)
+    try:
+        len(possibleSolutions[0])
+    except:
+        for i in possibleSolutions:
+            tk.Radiobutton(ventanita,
+                           text=i,
+                           padx=20,
+                           variable=opcionElegida,
+                           command=ShowChoice,
+                           value=i).pack(anchor=tk.W)
+    else:
+        if len(possibleSolutions[0]) == 2:
+            for i, j in possibleSolutions:
+                tk.Radiobutton(ventanita,
+                               text=f"{i} y {j}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
+        elif len(possibleSolutions[0]) == 3:
+            for i, j, k in possibleSolutions:
+                print(i, j, k)
+                tk.Radiobutton(ventanita,
+                               text=f"{i}, {j}, {k}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
+        elif len(possibleSolutions[0]) == 4:
+            for i, j, k, l in possibleSolutions:
+                print(i, j, k, l)
+                tk.Radiobutton(ventanita,
+                               text=f"{i}, {j}, {k}, {l}",
+                               padx=20,
+                               variable=opcionElegida,
+                               command=ShowChoice,
+                               value=i).pack(anchor=tk.W)
 
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",
@@ -248,7 +285,7 @@ def principal():
          "metodo": metodos.Grafico, 
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Metodo de la bisectriz",
-         "metodo": metodos.Bisectriz, 
+         "metodo": metodos.Bisectriz,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
@@ -296,16 +333,16 @@ def principal():
         button.place(x=600, y=(120+25*p))
 
     infoMetodos4 = [
-        {"nombre": "Linea recta", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Linea recta", "metodo": metodos.Linea_recta,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica",
-            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cubica", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Cuadratica", "metodo": metodos.Cuadratica,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Lineal con funcion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Cubica", "metodo": metodos.Cubica,
+            "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Lineal con funcion", "metodo": metodos.Lineal_con_funcion,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Cuadratica con funcion",
-            "metodo": metodos.Interpolacion_lineal, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Cuadratica_con_funcion, "interfaz": Interfaz_del_Metodo},
     ]
 
     def combine_funcs(*funcs):
@@ -346,18 +383,18 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler hacia atras", "metodo": metodos.Integracion_simpson13,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler Modificado", "metodo": metodos.Integracion_simpson38,
+        {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 2do Orden",
-            "metodo": metodos.Integracion_cotasCerrada, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta2, "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 3er Orden",
-            "metodo": metodos.Integracion_cotasAbiertas, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Runge Kutta 4to Orden: 1/3 Simpson", "metodo": metodos.Integracion_simpson38,
+            "metodo": metodos.Runge_Kutta3, "interfaz": Interfaz_del_Metodo},
+        {"nombre": "Runge Kutta 4to Orden: 1/3 Simpson", "metodo": metodos.Runge_Kutta4_13,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 4to Orden: 3/8 Simpson",
-            "metodo": metodos.Integracion_cotasCerrada, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta4_38, "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta Orden superior",
-            "metodo": metodos.Integracion_cotasAbiertas, "interfaz": Interfaz_del_Metodo},
+            "metodo": metodos.Runge_Kutta_OS, "interfaz": Interfaz_del_Metodo},
     ]
 
     def combine_funcs(*funcs):
