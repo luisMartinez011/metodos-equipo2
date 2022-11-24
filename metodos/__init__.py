@@ -15,6 +15,7 @@ from metodos.gauss_jordan import GaussJordan
 from metodos.eliminaciongaussiana import Egaussiana
 from metodos.gauss_seidel import GaussSeidel
 from metodos.polinomios import Polinomios
+from metodos.jacobi import Jacobi
 
 from metodos.integracion_trapezoidal import Integracion_trapezoidal
 from metodos.integracion_simson13 import Integracion_simpson13
