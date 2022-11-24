@@ -8,6 +8,7 @@ from metodos.punto_fijo import Punto_Fijo
 from metodos.metodo_bisectriz import Bisectriz
 from metodos.raphson import Newton_Raphson
 from metodos.secante import Secante
+from metodos.fposicion import Falsa_Posicion
 
 
 from metodos.gauss_jordan import GaussJordan

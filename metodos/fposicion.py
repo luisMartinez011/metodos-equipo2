@@ -48,10 +48,13 @@ class Falsa_Posicion:
             #Cambia el valor de a por el valor de x para el siguiente intervalo
             self.a = self.x
             #A este punto deberia imprimir el intervalo final donde se encontro el error estimado
-        #print('i' + self.cont + 'A = ' + self.a + 'F(a) = ' + self.funca() + 'Error = ' + self.eaux() + 'Error = ' + self.eaux)
-    
+            #print('i' + self.cont + 'A = ' + self.a + 'F(a) = ' + self.funca() + 'Error = ' + self.eaux() + 'Error = ' + self.eaux)
+            ayuda = self.eaux 
+            return ayuda
+
     def error(self):
-        return self.eaux
+        auxiliares = self.eaux
+        return auxiliares
 
 
 test = Falsa_Posicion()
