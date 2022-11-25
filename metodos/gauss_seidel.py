@@ -39,7 +39,7 @@ class GaussSeidel:
             return s
 
     def __init__(self):
-        
+
         selectProblem = randint(1, 2)
         if selectProblem == 1:
             self.A = np.array([[3, -0.1, -0.2],
@@ -59,7 +59,7 @@ class GaussSeidel:
                             [71.4]])
             self.problemImage = "jacobi2.png"
             self.op = 2
-        
+
         self.a = 0
         self.b = 0
         self.c = 0
@@ -69,7 +69,7 @@ class GaussSeidel:
         self.tol = 0.001
 
     def solve(self):
-              
+
             auxa = self.a
             auxb = self.b
             auxc = self.c
@@ -87,7 +87,7 @@ class GaussSeidel:
                 self.b = self.b1
                 self.c1 = (5 - (self.a) + 3*(self.b)) / 5
                 self.c = self.c1
-           
+
             errora= self.a1 - auxa
             errorb = self.b1 - auxb
             errorc = self.c1 - auxc
@@ -112,10 +112,10 @@ class GaussSeidel:
                 errora= self.a1 - auxa
                 errorb = self.b1 - auxb
                 errorc = self.c1 - auxc
-            
+
                 auxa = self.a
                 auxb = self.b
-                auxc = self.c  
+                auxc = self.c
             if(self.op == 1):
                 self.a1 = (7.85 + 0.1*(self.b) + 0.2*(self.c)) / 3
                 self.a = self.a1
