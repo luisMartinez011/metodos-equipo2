@@ -58,25 +58,12 @@ def Interfaz_del_Metodo(metodoElegido):
     # Prints an image of the problem in the window
 
     def printProblemImage():
-        canvas = Canvas(
-            ventanita,
-            width=500,
-            height=200
-        )
-        canvas.pack()
         global problemIMG
-        problemIMG = ImageTk.PhotoImage(
-            Image.open(f'metodos/problems_img/{metodo.problemImage}'))
+        img = Image.open(f'metodos/problems_img/{metodo.problemImage}')
+        problemIMG = ImageTk.PhotoImage(img)
 
-        canvas.create_image(
-            10,
-            10,
-            anchor=NW,
-            image=problemIMG
-        )
-        Label(
-            text=f'width: {problemIMG.width()} height: {problemIMG.height()}'
-        ).pack()
+        disp_img = Label(ventanita, image=problemIMG)
+        disp_img.pack(pady=20)
 
     header()
     # Create a countdown timer in the window
@@ -282,7 +269,7 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo Grafico",
-         "metodo": metodos.Grafico, 
+         "metodo": metodos.Grafico,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Metodo de la bisectriz",
          "metodo": metodos.Bisectriz,
