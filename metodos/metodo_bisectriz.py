@@ -39,7 +39,7 @@ class Bisectriz:
         # change this value if you want customized solutions
         # if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
-        fake_solutions = 4
+        fake_solutions = 3
 
         rng = np.random.default_rng()
         s = rng.normal(solution, standard_deviation, fake_solutions)

@@ -192,15 +192,15 @@ def Interfaz_del_Metodo(metodoElegido):
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",
                             command=lambda: solvesTheProblem(opcionElegida))
-    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,)
+    returnSolution.place(x=800, y=300)
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
         principal(), ventanita.destroy()])
-    botonMenu.pack(padx=5, pady=5, ipadx=1, ipady=1)
+    botonMenu.place(x=800, y=340)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.pack(padx=5, pady=5)
+    botonCerrar.place(x=800, y=380)
 
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
