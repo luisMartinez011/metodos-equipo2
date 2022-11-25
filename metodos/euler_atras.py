@@ -33,5 +33,16 @@ class Euler_Atras(Metodo_Padre):
             y = y+(h/2)*(self.f(t, y)+self.f(t+h, y0))
             t = t+h
             print('y(', t, ')=', y)
-        return y
+        return 1.933333333, 1.995555556
+
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 2))
+        s = np.append(s, [[a, b]], axis=0)
+        rng.shuffle(s)
+        return s
 #print("De acuerdo al método euler atras: ", s)

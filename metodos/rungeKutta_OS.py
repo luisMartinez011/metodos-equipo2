@@ -63,4 +63,15 @@ class Runge_Kutta_OS:
 
         self.g_x = g_x
 
-        return g_x
+        return g_x, y12, y12p
+
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b, c = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))
+        s = np.append(s, [[a, b, c]], axis=0)
+        rng.shuffle(s)
+        return s
