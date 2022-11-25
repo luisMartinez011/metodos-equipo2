@@ -31,6 +31,9 @@ from metodos.integracion_simson38 import Integracion_simpson38
 from metodos.integracion_coteCerrada import Integracion_cotasCerrada
 from metodos.integracion_coteAbierta import Integracion_cotasAbiertas
 
+
+from metodos.euler_adelante import Euler_Adelante
+from metodos.euler_atras import Euler_Atras
 from metodos.euler_modificado import Euler_Modificado
 from metodos.rungeKutta2 import Runge_Kutta2
 from metodos.rungeKutta3 import Runge_Kutta3

@@ -32,10 +32,10 @@ class Cubica(Metodo_Padre):
     def solve(self):
         x = self.x
         y = self.y
-        result = np.poly1d(np.polyfit(x,
-                                      y, 3))
+        a, b, c, d = np.poly1d(np.polyfit(x,
+                                          y, 3))
         # result(set x value)
-        return result
+        return a, b, c, d
 
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b, c, d = self.solve()

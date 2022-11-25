@@ -1,25 +1,22 @@
 import numpy as np
 import sympy as sp
-import functools
 from random import randint
-from math import *
 from metodos.metodos_padre import Metodo_Padre
+from math import *
 
-# eee
 
-
-class Euler_Modificado(Metodo_Padre):
+class Euler_Atras(Metodo_Padre):
 
     def __init__(self):
         self.problemImage = "EulerModificado_1.png"
 
     @staticmethod
     def formula():
-        return "Euler_Modificado.png"
+        return "Euler_Atras.png"
 
     @staticmethod
     def methodName():
-        return "EulerModificado"
+        return "Euler hacia atras"
 
     def f(self, t, y):
         func = t*exp(3*t)-2*y
@@ -37,3 +34,4 @@ class Euler_Modificado(Metodo_Padre):
             t = t+h
             print('y(', t, ')=', y)
         return y
+#print("De acuerdo al método euler atras: ", s)
