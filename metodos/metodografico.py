@@ -4,7 +4,7 @@ import random
 
 class Grafico:
 
-    def generatePossibleSolutions(self, standard_deviation=3):
+    def generatePossibleSolutions(self, standard_deviation=1):
         a,b,c = self.solve()
 
         fake_solutions = 4
@@ -48,7 +48,7 @@ class Grafico:
             if self.op == 1:
                 ant = pow(a,3) - 6.5*a + 2
                 post =pow(b,3) - 6.5*b + 2
-            elif self.op == 2:
+            else:
                 ant = (2 * pow(a,2)) - (6 * a) - 3
                 post= (2 * pow(b,2)) - (6 * b) - 3
 

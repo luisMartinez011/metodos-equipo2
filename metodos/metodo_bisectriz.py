@@ -19,17 +19,19 @@ class Bisectriz():
         self.m = 0
         self.x = 0
         self.tol = pow(10, -3)
-        selectProblem = 1
+        selectProblem = randint(1, 2)
         if selectProblem == 1:
             self.a = 0
             self.b = 1
             self.accion = 1
             self.problemImage = "Bisectriz_1.png"
-        # elif selectProblem == 2:
-        #     self.a = 0
-        #     self.b = 1
-        #     self.formulaElegida = 2
-        #     self.problemImage = "Bisectriz_2"
+            self.op = 1
+        elif selectProblem == 2:
+             self.op = 2
+             self.a = -5
+             self.b = 14
+             self.formulaElegida = 2
+             self.problemImage = "Bisectriz_2.png"
 
     @staticmethod
     def formula():
@@ -59,9 +61,16 @@ class Bisectriz():
         while (abs(self.m1 - self.m) > self.tol):
             self.m1 = self.m
             self.m = (self.a + self.b) / 2
-            auxa= pow(self.a, 3) - 6.5*self.a + 2
-            auxb= pow(self.b, 3) - 6.5*self.b + 2
-            auxm = pow(self.m, 3) - 6.5*self.m + 2
+
+            if self.op == 1:
+                auxa= pow(self.a, 3) - 6.5*self.a + 2
+                auxb= pow(self.b, 3) - 6.5*self.b + 2
+                auxm = pow(self.m, 3) - 6.5*self.m + 2
+            elif self.op == 2:
+                auxa= pow(self.a, 3) - 4*pow(self.a,2) - 10
+                auxb= pow(self.b, 3) - 4*pow(self.a,2) - 10
+                auxm = pow(self.m, 3) - 4*pow(self.a,2) - 10
+
             if (auxa * auxm < 0):  # cambia el singo en este intervalos
                 self.b = self.m
             if (auxm  * auxb < 0):  # cambia el signo en este intervalo
