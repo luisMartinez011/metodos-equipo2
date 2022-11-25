@@ -12,46 +12,99 @@ class Jacobi:
     def methodName():
         return "Jacobi"
 
-    def generatePossibleSolutions(self):
-            a,b,c,fact = self.solve()
+    def generatePossibleSolutions(self,  standard_deviation=0.5):
+            a,b,c = self.solve()
             # change this value if you want customized solutions
             # (optional) if your solution is an integer number, change this value to an integer
-            standard_deviation = 0.5
-            fake_solutions = 3
+            fake_solutions = 2
 
             rng = np.random.default_rng()
-            s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
-            s = np.append(s,[[a,b,c,fact]], axis=0)
+            s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
+            s = np.append(s,[[a,b,c]], axis=0)
             rng.shuffle(s)
             return s
 
     def __init__(self):
+
         selectProblem = randint(1, 2)
-        self.A = np.array([[3, -0.1, -0.2],
-                           [0.1, 7, -0.3],
-                           [0.3, -0.2, 10]])
-        self.B = np.array([[7.85],
-                           [-19.3],
-                           [71.4]])
-        self.problemImage = "jacobi1.png"
-        self.x0 = 0
-        self.x1 = 0
+        if selectProblem == 1:
+            self.A = np.array([[3, -0.1, -0.2],
+                            [0.1, 7, -0.3],
+                            [0.3, -0.2, 10]])
+            self.B = np.array([[7.85],
+                            [-19.3],
+                            [71.4]])
+            self.problemImage = "jacobi1.png"
+            self.op = 1
+        elif selectProblem == 2:
+            self.A = np.array([[3, -0.1, -0.2],
+                            [0.1, 7, -0.3],
+                            [0.3, -0.2, 10]])
+            self.B = np.array([[7.85],
+                            [-19.3],
+                            [71.4]])
+            self.problemImage = "jacobi2.png"
+            self.op = 2
+        
+        self.a = 1
+        self.b = 1
+        self.c = 1
+        self.a1 = 0
+        self.b1 = 0
+        self.c1 = 0
         self.tol = 0.001
 
     def solve(self):
-                self.x0 = np.zeros(3)
-                self.x1 = np.zeros(3)
-                error1 = 1
-                while (abs(error1) > self.tol) :
-                    self.x0 = self.x1
-                    self.x1[0] = (self.B[0] - self.A[0,0] * self.x0[0] - self.A[0,1] * self.x0[2] - self.A[0,2] * self.x0[3]) / self.A[0,0]
-                    self.x1[1] = (self.B[1] - self.A[1,0] * self.x0[0] - self.A[1,1] * self.x0[2] - self.A[1,2] * self.x0[3]) / self.A[1,1]
-                    self.x1[2] = (self.B[2] - self.A[2,0] * self.x0[0] - self.A[2,1] * self.x0[2] - self.A[2,2] * self.x0[3]) / self.A[2,2]
-                    error1 = self.x1[0] - self.x0[0]
-                    error2  = self.x1[1] - self.x0[1]
-                    error3 = self.x1[2] - self.x0[2]
-                    k = k + 1 
-                a = self.x1[0] #numeros de la ecuacion
-                b = self.x1[1]
-                c = self.x1[2]
-                return a,b,c,error1
+              
+            if(self.op == 1):
+                self.a1 = (7.85 + 0.1*(self.b) + 0.2*(self.c)) / 3
+                self.b1 = (-19.3 - 0.1*(self.a) + 0.3*(self.c)) / 7
+                self.c1 = (71.4 - 0.3*(self.a) + 0.2*(self.b)) / 10
+            elif(self.op == 2):
+                self.a1 = (8 + (self.b) + (self.c)) / 8
+                self.b1 = (4 + 2*(self.a) - (self.c)) / 4
+                self.c1 = (5 - (self.a) + 3*(self.b)) / 5
+           
+            errora= self.a1 - self.a
+            errorb = self.b1 - self.b
+            errorc = self.c1 - self.c
+            while((abs(errora) > self.tol) and (abs(errorb) > self.tol) and (abs(errorc) > self.tol)):
+                self.a = self.a1
+                self.b = self.b1
+                self.c = self.c1           
+                if(self.op == 1):
+                    self.a1 = (7.85 + 0.1*(self.b) + 0.2*(self.c)) / 3
+                    self.b1 = (-19.3 - 0.1*(self.a) + 0.3*(self.c)) / 7
+                    self.c1 = (71.4 - 0.3*(self.a) + 0.2*(self.b)) / 10
+                elif(self.op == 2):
+                    self.a1 = (8 + (self.b) + (self.c)) / 8
+                    self.b1 = (4 + 2*(self.a) - (self.c)) / 4
+                    self.c1 = (5 - (self.a) + 3*(self.b)) / 5
+                errora= self.a1 - self.a
+                errorb = self.b1 - self.b
+                errorc = self.c1 - self.c
+            
+            self.a = self.a1
+            self.b = self.b1
+            self.c = self.c1    
+            if(self.op == 1):
+                    self.a1 = (7.85 + 0.1*(self.b) + 0.2*(self.c)) / 3
+                    self.b1 = (-19.3 - 0.1*(self.a) + 0.3*(self.c)) / 7
+                    self.c1 = (71.4 - 0.3*(self.a) + 0.2*(self.b)) / 10
+            elif(self.op == 2):
+                    self.a1 = (8 + (self.b) + (self.c)) / 8
+                    self.b1 = (4 + 2*(self.a) - (self.c)) / 4
+                    self.c1 = (5 - (self.a) + 3*(self.b)) / 5
+            errora= self.a1 - self.a
+            errorb = self.b1 - self.b
+            errorc = self.c1 - self.c
+            a = self.a
+            b = self.b
+            c = self.c
+            
+            return a,b,c
+
+
+            
+
+
