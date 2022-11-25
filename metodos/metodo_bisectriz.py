@@ -4,9 +4,10 @@ import numpy as np
 import functools
 import sympy as sp
 from math import *
+#from metodos.metodos_padre import Metodo_Padre
 
 
-class Bisectriz:
+class Bisectriz():
 
     @staticmethod
     def methodName():
@@ -22,7 +23,7 @@ class Bisectriz:
         if selectProblem == 1:
             self.a = 0
             self.b = 1
-            self.formulaElegida = 1
+            self.accion = 1
             self.problemImage = "Bisectriz_1.png"
         # elif selectProblem == 2:
         #     self.a = 0
@@ -42,18 +43,14 @@ class Bisectriz:
         fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(e, standard_deviation, fake_solutions)
-        s = np.append(s, [[a,b,e]], axis=0)
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))
+        s = np.append(s, [[a, b, c]], axis=0)
         rng.shuffle(s)
         return s
 
-    @staticmethod
-    def extra(self, x):
+    #def extra(x,self):
         # definir formulas
-        if self.formulaElegida == 1:
-            return cos(x) - pow(x, 3)
-        else:
-            return pow(x, 3) - 6.5*x + 2
+            #return pow(x, 3) - 6.5*x + 2
 
     def solve(self):
         self.m1 = self.a
@@ -62,9 +59,12 @@ class Bisectriz:
         while (abs(self.m1 - self.m) > self.tol):
             self.m1 = self.m
             self.m = (self.a + self.b) / 2
-            if (self.extra(self.a) * self.extra(self.m) < 0):  # cambia el singo en este intervalos
+            auxa= pow(self.a, 3) - 6.5*self.a + 2
+            auxb= pow(self.b, 3) - 6.5*self.b + 2
+            auxm = pow(self.m, 3) - 6.5*self.m + 2
+            if (auxa * auxm < 0):  # cambia el singo en este intervalos
                 self.b = self.m
-            if (self.extra(self.m) * self.extra(self.b) < 0):  # cambia el signo en este intervalo
+            if (auxm  * auxb < 0):  # cambia el signo en este intervalo
                 self.a = self.m
             self.k = self.k + 1
         # devuelve el intervalo
@@ -74,5 +74,5 @@ class Bisectriz:
         return retornoa, retornob , error
 
     def error(self):
-        error = format(self.m1 - self.m)
+        error = self.m1 - self.m
         return error
