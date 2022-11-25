@@ -23,9 +23,6 @@ class Euler_Adelante(Metodo_Padre):
     def methodName():
         return "Euler hacia adelante"
 
-    def f(self, t, y):
-        func = t*exp(3*t)-2*y
-        return func
 
     def solve(self):
         def f( t, y):
