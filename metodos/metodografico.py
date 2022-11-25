@@ -4,7 +4,7 @@ import random
 
 class Grafico:
 
-    def generatePossibleSolutions(self, standard_deviation=0.1):
+    def generatePossibleSolutions(self, standard_deviation=3):
         a,b,c = self.solve()
 
         fake_solutions = 4
@@ -24,14 +24,18 @@ class Grafico:
         return "Metodo_Grafico"
 
     def __init__(self):
+        selectProblem = random.randint(1, 2)
+        if selectProblem == 1:
+            self.x = np.array([ -3,-2, -1, 0, 1, 2, 3])
+            self.y = np.array([ 0, 0, 0])
+            self.problemImage = "grafico1.png"
+            self.op = 1
+        elif selectProblem == 2:
+            self.x = np.array([ -3,-2, -1, 0, 1, 2, 3])
+            self.y = np.array([ 0, 0, 0])
+            self.problemImage = "grafico2.png"
+            self.op = 2
 
-        self.x = np.array([ -3,-2, -1, 0, 1, 2, 3])
-        self.y = np.array([ 0, 0, 0])
-        self.problemImage = "grafico1.png"
-
-    def funcion(self,x):
-        yf = pow(x,3) - 6.5*x + 2
-        return yf
     def solve(self):
         i = 0
         k= 0
@@ -40,14 +44,22 @@ class Grafico:
         for i in range(len(self.x)-1):
             a = self.x[i]
             b = self.x[i+1]
-            ant = pow(a,3) - 6.5*a + 2
-            post =pow(b,3) - 6.5*b + 2
+
+            if self.op == 1:
+                ant = pow(a,3) - 6.5*a + 2
+                post =pow(b,3) - 6.5*b + 2
+            elif self.op == 2:
+                ant = (2 * pow(a,2)) - (6 * a) - 3
+                post= (2 * pow(b,2)) - (6 * b) - 3
+
             if(ant > 0 and post < 0):
                 self.y[k] = ant
-                k = k + 1
+                if k != 3:
+                    k = k + 1
             elif(ant < 0 and post > 0):
                 self.y[k] = post
-                k = k + 1
+                if k != 3:
+                    k = k + 1
                 
         y1 = self.y[0]
         y2 = self.y[1]

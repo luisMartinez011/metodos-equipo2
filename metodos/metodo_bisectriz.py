@@ -44,7 +44,7 @@ class Bisectriz():
 
         rng = np.random.default_rng()
         s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))
-        s = np.append(s, [[a, b, c]], axis=0)
+        s = np.append(s, [[a, b, e]], axis=0)
         rng.shuffle(s)
         return s
 
