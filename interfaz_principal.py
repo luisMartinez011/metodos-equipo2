@@ -58,25 +58,12 @@ def Interfaz_del_Metodo(metodoElegido):
     # Prints an image of the problem in the window
 
     def printProblemImage():
-        canvas = Canvas(
-            ventanita,
-            width=500,
-            height=200
-        )
-        canvas.pack()
         global problemIMG
-        problemIMG = ImageTk.PhotoImage(
-            Image.open(f'metodos/problems_img/{metodo.problemImage}'))
+        img = Image.open(f'metodos/problems_img/{metodo.problemImage}')
+        problemIMG = ImageTk.PhotoImage(img)
 
-        canvas.create_image(
-            10,
-            10,
-            anchor=NW,
-            image=problemIMG
-        )
-        Label(
-            text=f'width: {problemIMG.width()} height: {problemIMG.height()}'
-        ).pack()
+        disp_img = Label(ventanita, image=problemIMG)
+        disp_img.pack(pady=20)
 
     header()
     # Create a countdown timer in the window
@@ -205,15 +192,15 @@ def Interfaz_del_Metodo(metodoElegido):
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",
                             command=lambda: solvesTheProblem(opcionElegida))
-    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,)
+    returnSolution.place(x=800, y=300)
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
     botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
         principal(), ventanita.destroy()])
-    botonMenu.pack(padx=5, pady=5, ipadx=1, ipady=1)
+    botonMenu.place(x=800, y=340)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.pack(padx=5, pady=5)
+    botonCerrar.place(x=800, y=380)
 
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
@@ -282,7 +269,7 @@ def principal():
 
     infoMetodos2 = [
         {"nombre": "Metodo Grafico",
-         "metodo": metodos.Grafico, 
+         "metodo": metodos.Grafico,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Metodo de la bisectriz",
          "metodo": metodos.Bisectriz,
@@ -379,9 +366,9 @@ def principal():
         button.place(x=300, y=(345+25*i))
 
     infoMetodos6 = [
-        {"nombre": "Euler hacia adelante", "metodo": metodos.Integracion_trapezoidal,
+        {"nombre": "Euler hacia adelante", "metodo": metodos.Euler_Adelante,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler hacia atras", "metodo": metodos.Integracion_simpson13,
+        {"nombre": "Euler hacia atras", "metodo": metodos.Euler_Atras,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},

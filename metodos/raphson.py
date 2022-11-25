@@ -12,14 +12,14 @@ class Newton_Raphson:
         # change this value if you want customized solutions
         # (optional) if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
-        fake_solutions = 4
+        fake_solutions = 3
 
         rng = np.random.default_rng()
         s = rng.normal(solution, standard_deviation, fake_solutions)
         s = np.append(s, solution)
         rng.shuffle(s)
         return s
-        
+
     def __init__(self):
         self.tol = 10**(-5)
         self.x = 0
@@ -27,8 +27,8 @@ class Newton_Raphson:
         self.indi = 1
         self.problemImage = "rapson1.png"
         self.x1 = 0
-        self.k = 0  
-        self.n = 100    
+        self.k = 0
+        self.n = 100
     @staticmethod
     def formula():
         return "Raphson.png"
@@ -38,12 +38,12 @@ class Newton_Raphson:
         return "Newton Raphson"
 
     def f(self,x):
-        #aqui van las funciones 
+        #aqui van las funciones
         x = 0.8*pow(x,2) + x - 3
         return x
     def df(self,dx):
         #aqui va la derivada de la funcion
-        dx = (1.6* dx) +1 
+        dx = (1.6* dx) +1
         return dx
 
     def solve(self):

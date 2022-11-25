@@ -46,13 +46,13 @@ class GaussJordan(Metodo_Padre):
         self.factor = 0
         self.x = 0
         self.AB1 = 0
-    
+
         def generatePossibleSolutions(self):
             a,b,c,fact = self.solve()
             # change this value if you want customized solutions
             # (optional) if your solution is an integer number, change this value to an integer
             standard_deviation = 0.5
-            fake_solutions = 4
+            fake_solutions = 3
 
             rng = np.random.default_rng()
             s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
