@@ -13,8 +13,8 @@ class Falsa_Posicion:
         if selectProblem == 1:
             self.a = 1
             self.b = 2
-            self.fa = -2
-            self.fb = 17
+            self.fa = -5
+            self.fb = 14
             self.problemImage = "fposicion2.png"
             self.op =1
         elif selectProblem == 2:
@@ -40,7 +40,8 @@ class Falsa_Posicion:
 
     def solve(self):
         if self.op == 1:
-                self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
+                #self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
+                self.fa = pow(self.a,3) + (4 * pow(self.a,2)) -10
         elif self.op == 2:
                 self.fa = self.a* exp(self.a) - 10 
         self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))   
@@ -48,7 +49,8 @@ class Falsa_Posicion:
         while abs(self.x - self.a) > self.tol:
             self.a = self.x
             if self.op == 1:
-                self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
+                #self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
+                self.fa = pow(self.a,3) + (4 * pow(self.a,2)) -10
             elif self.op == 2:
                 self.fa = self.a * exp(self.a) - 10 
             self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))
