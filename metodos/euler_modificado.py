@@ -20,9 +20,7 @@ class Euler_Modificado:
     def methodName():
         return "EulerModificado"
 
-    def f(self, t, y):
-        func = t*exp(3*t)-2*y
-        return func
+
 
     def solve(self):
         def f( t, y):
