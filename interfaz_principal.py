@@ -366,9 +366,9 @@ def principal():
         button.place(x=300, y=(345+25*i))
 
     infoMetodos6 = [
-        {"nombre": "Euler hacia adelante", "metodo": metodos.Integracion_trapezoidal,
+        {"nombre": "Euler hacia adelante", "metodo": metodos.Euler_Adelante,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler hacia atras", "metodo": metodos.Integracion_simpson13,
+        {"nombre": "Euler hacia atras", "metodo": metodos.Euler_Atras,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
