@@ -39,17 +39,19 @@ class Jacobi:
         self.tol = 0.001
 
     def solve(self):
-                self.x0 = np.zeros(4)
-                self.x1 = np.zeros(4)
-                while abs(self.x1 - self.x0) < self.tol :
+                self.x0 = np.zeros(3)
+                self.x1 = np.zeros(3)
+                error1 = 1
+                while (abs(error1) > self.tol) :
                     self.x0 = self.x1
-                    self.x1[0] = (self.B[0] - self.A[0,1] * self.x0[1] - self.A[0,2] * self.x0[2] - self.A[0,3] * self.x0[3]) / self.A[0,0]
-                    self.x1[1] = (self.B[1] - self.A[1,0] * self.x0[0] - self.A[1,2] * self.x0[2] - self.A[1,3] * self.x0[3]) / self.A[1,1]
-                    self.x1[2] = (self.B[2] - self.A[2,0] * self.x0[0] - self.A[2,1] * self.x0[1] - self.A[2,3] * self.x0[3]) / self.A[2,2]
-                    self.x1[3] = (self.B[3] - self.A[3,0] * self.x0[0] - self.A[3,1] * self.x0[1] - self.A[3,2] * self.x0[2]) / self.A[3,3]
-                    k = k + 1
-                error = abs(self.x1 - self.x0)
+                    self.x1[0] = (self.B[0] - self.A[0,0] * self.x0[0] - self.A[0,1] * self.x0[2] - self.A[0,2] * self.x0[3]) / self.A[0,0]
+                    self.x1[1] = (self.B[1] - self.A[1,0] * self.x0[0] - self.A[1,1] * self.x0[2] - self.A[1,2] * self.x0[3]) / self.A[1,1]
+                    self.x1[2] = (self.B[2] - self.A[2,0] * self.x0[0] - self.A[2,1] * self.x0[2] - self.A[2,2] * self.x0[3]) / self.A[2,2]
+                    error1 = self.x1[0] - self.x0[0]
+                    error2  = self.x1[1] - self.x0[1]
+                    error3 = self.x1[2] - self.x0[2]
+                    k = k + 1 
                 a = self.x1[0] #numeros de la ecuacion
                 b = self.x1[1]
                 c = self.x1[2]
-                return a,b,c,error
+                return a,b,c,error1

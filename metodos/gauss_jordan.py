@@ -55,7 +55,7 @@ class GaussJordan(Metodo_Padre):
             fake_solutions = 3
 
             rng = np.random.default_rng()
-            s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
+            s = rng.normal(a, standard_deviation, size=(fake_solutions,4))
             s = np.append(s,[[a,b,c,fact]], axis=0)
             rng.shuffle(s)
             return s

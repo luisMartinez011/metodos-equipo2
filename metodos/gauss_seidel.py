@@ -14,21 +14,20 @@ class GaussSeidel:
         return "Gauss_Seidel"
 
     def generatePossibleSolutions(self):
-        a,b,c,alter = self.solve()
+        a,b,c = self.solve()
         # change this value if you want customized solutions
         # (optional) if your solution is an integer number, change this value to an integer
         standard_deviation = 0.5
         fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
-        s = np.append(s,[[a,b,c,alter]], axis=0)
+        s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
+        s = np.append(s, [[a,b,c]], axis=0)
         rng.shuffle(s)
         return s
 
     def __init__(self):
         selectProblem = randint(1, 2)
-        selectProblem = 1
         if selectProblem == 1:
             self.A = np.array([[3, -0.1, -0.2],
                                [0.1, 7, -0.3],
@@ -46,13 +45,13 @@ class GaussSeidel:
                                [4]])
             self.problemImage = "GaussSeidel2.png"
 
-        self.X0 = np.array([0., 0., 0.])
+        self.X0 = np.array([0, 0, 0])
         self.tol = 0.001
         self.itermax = 100
-        self.tamano = 0.
+        self.tamano = 0
         self.n = 0
         self.m = 0
-        self.X = 0
+        self.x = 0
         self.diferencia = 0
         self.errado = 0
 
@@ -67,7 +66,7 @@ class GaussSeidel:
         self.errado = 2*self.tol
 
         k = 0
-        while not (self.errado <= self.tol or k > self.itermax):
+        while not (self.errado < self.tol or k > self.itermax):
             # Por fila
             for i in range(0, self.n, 1):
                 suma = 0
@@ -81,19 +80,15 @@ class GaussSeidel:
                 self.diferencia[i] = np.abs(nuevo-self.X[i])
                 self.X[i] = nuevo
             self.errado = np.max(self.diferencia)
-            k += 1
+            k = k + 1
         # Respuesta de X en columna
         self.X = np.transpose([self.X])
+        print(self.X)
+        print(k)
         if (k > self.itermax):
             self.X = 0
         self.verificar = np.dot(self.A,self.X)
-        a = self.x[0]
-        b = self.x[1]
-        c = self.x[2]
-        x = self.X
-        alter = self.verificar
-        return x , alter
-
-    def error(self):
-        alter = self.verificar
-        return alter
+        a = 1
+        b = 2
+        c = 3
+        return a , b, c

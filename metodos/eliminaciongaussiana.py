@@ -16,7 +16,7 @@ class Egaussiana:
             # change this value if you want customized solutions
             # (optional) if your solution is an integer number, change this value to an integer
             standard_deviation = 0.5
-            fake_solutions = 3
+            fake_solutions = 4
 
             rng = np.random.default_rng()
             s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
@@ -27,12 +27,15 @@ class Egaussiana:
     def __init__(self):
         selectProblem = randint(1, 2)
         self.orden = 0
-        selectProblem = 2
         if selectProblem == 1:
-            self.matriz = [[3, 2, 3, 3], [1, 3, 1, -6], [5, 1, 3, 12]]
+            self.matriz = np.array([3, 2, 3, 3], 
+                                   [1, 3, 1, -6], 
+                                   [5, 1, 3, 12])
             self.problemImage = "Eliminacion1.png"
         elif selectProblem == 2:
-            self.matriz = [[2, 1, -3, -1], [-1, 3, 2, 12], [3, 1, -3, 0]]
+            self.matriz = np.array([2, 1, -3, -1],
+                                   [-1, 3, 2, 12], 
+                                   [3, 1, -3, 0])
             self.problemImage = "Eliminacion2.png"
         self.division = 0
         self.x = 0
