@@ -2,7 +2,7 @@ from random import randint
 import pandas as pd
 import numpy as np
 import functools
-from math import *
+from mpmath import *
 
 
 class Punto_Fijo:
@@ -12,7 +12,27 @@ class Punto_Fijo:
         self.a = 0
         self.x = 0
         self.m = 0
+        self.op = 0 
         selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.problemImage = "pfijo1.png"
+            self.op = 1
+        elif selectProblem == 2:
+            self.problemImage = "pfijo2.png"
+            self.op = 2
+
+    def generatePossibleSolutions(self, standard_deviation = 0.1):
+        a, b, e = self.solve()
+        # change this value if you want customized solutions
+        # (optional) if your solution is an integer number, change this value to an intege
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(e, standard_deviation, size=(fake_solutions,3))
+        s = np.append(s, [[e,a,b]], axis= 0)
+        rng.shuffle(s)
+        return s
+
 
     @staticmethod
     def formula():
@@ -22,21 +42,27 @@ class Punto_Fijo:
     def methodName():
         return "Punto Fijo"
 
-    def func(self):
-        return exp(-self.x)
-
     def solve(self):
         aux = 0
-        self.m = self.func(self.a)
+        if self.op == 1:
+            self.m = (exp(self.a) - 2)
+            self.m = round(self.m, 9)
+        elif self.op == 2:
+            self.m = (exp(self.a) - 2) / 2
+            self.m = round(self.m, 9)
         k = 0
-        while (abs(self.a-self.m) > self.tol):
+        while (abs(self.m-self.x) > self.tol):
+            self.x = self.m
             self.a = self.m
-            aux = self.m
-            self.m = self.func(self.a)
+            if self.op == 1:
+                self.m = (exp(self.a) - 2)
+                self.m = round(self.m, 9)
+            elif self.op == 2:
+                self.m = (exp(self.a) - 2) / 2
+                self.m = round(self.m, 9)
             k = k+1
-        error = self.error()
-        return error
-
-    def error(self):
-        e = self.a - self.m
-        return abs(e)
+            
+        error = round(self.m - self.x,9)
+        a = round(self.x,9)
+        b = round(self.m,9)
+        return a , b , error   

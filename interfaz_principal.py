@@ -172,7 +172,7 @@ def Interfaz_del_Metodo(metodoElegido):
                                value=i).pack(anchor=tk.W)
         elif len(possibleSolutions[0]) == 3:
             for i, j, k in possibleSolutions:
-                print(i, j, k)
+                #print(i, j, k)
                 tk.Radiobutton(ventanita,
                                text=f"{i}, {j}, {k}",
                                padx=20,
@@ -181,7 +181,7 @@ def Interfaz_del_Metodo(metodoElegido):
                                value=i).pack(anchor=tk.W)
         elif len(possibleSolutions[0]) == 4:
             for i, j, k, l in possibleSolutions:
-                print(i, j, k, l)
+                #print(i, j, k, l)
                 tk.Radiobutton(ventanita,
                                text=f"{i}, {j}, {k}, {l}",
                                padx=20,
@@ -278,7 +278,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Falsa posicion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Falsa posicion", "metodo": metodos.Falsa_Posicion,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Secante", "metodo": metodos.Secante,
             "interfaz": Interfaz_del_Metodo},
