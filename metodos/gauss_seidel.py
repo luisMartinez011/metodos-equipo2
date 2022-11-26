@@ -13,30 +13,16 @@ class GaussSeidel:
     def methodName():
         return "Gauss_Seidel"
 
-    def generatePossibleSolutions(self):
-        a,b,c = self.solve()
-        # change this value if you want customized solutions
-        # (optional) if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.5
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b, c = self.solve()
+
         fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
-        s = np.append(s, [[a,b,c]], axis=0)
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))
+        s = np.append(s, [[a, b, c]], axis=0)
         rng.shuffle(s)
         return s
-
-    def generatePossibleSolutions(self, standard_deviation=0.5):
-            a,b,c = self.solve()
-            # change this value if you want customized solutions
-            # (optional) if your solution is an integer number, change this value to an integer
-            fake_solutions = 2
-
-            rng = np.random.default_rng()
-            s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
-            s = np.append(s,[[a,b,c]], axis=0)
-            rng.shuffle(s)
-            return s
 
     def __init__(self):
 
