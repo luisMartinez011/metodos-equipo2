@@ -305,9 +305,7 @@ def principal():
         {"nombre": "Gauss Seidel", "metodo": metodos.GaussSeidel,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Jacobi", "metodo": metodos.Jacobi,
-            "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Raíces con Polinomios", "metodo": metodos.Polinomios,
-            "interfaz": Interfaz_del_Metodo},
+            "interfaz": Interfaz_del_Metodo}
     ]
 
     def combine_funcs(*funcs):
@@ -315,7 +313,7 @@ def principal():
             for f in funcs:
                 f(*args, **kwargs)
         return combined_func
-    for p in range(6):
+    for p in range(5):
         button = tk.Button(vprincipal, text=f"#{p+1}: {infoMetodos3[p]['nombre']}",
                            command=lambda metodo=infoMetodos3[p]["metodo"]: infoMetodos3[p]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=600, y=(120+25*p))
