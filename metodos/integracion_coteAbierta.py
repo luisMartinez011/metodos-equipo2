@@ -1,8 +1,6 @@
 import numpy as np
-from metodos.metodos_padre import Metodo_Padre
 
-
-class Integracion_cotasAbiertas(Metodo_Padre):
+class Integracion_cotasAbiertas():
 
     def __init__(self):
         self.a = -2
@@ -13,7 +11,17 @@ class Integracion_cotasAbiertas(Metodo_Padre):
 
         self.x = 4
         self.problemImage = "CotesAbiertas2.png"
+    
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        solution,a = self.solve()
 
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(solution, standard_deviation, size=(fake_solutions,2))
+        s = np.append(s,[[solution , a]], axis=0)
+        rng.shuffle(s)
+        return s
     # returns a formula´s string
     @staticmethod
     def formula():
@@ -42,4 +50,4 @@ class Integracion_cotasAbiertas(Metodo_Padre):
 
         self.g_x = g_x
 
-        return g_x
+        return g_x,f_suma

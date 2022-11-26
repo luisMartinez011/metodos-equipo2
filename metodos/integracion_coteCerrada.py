@@ -1,8 +1,7 @@
 import numpy as np
-from metodos.metodos_padre import Metodo_Padre
 
 
-class Integracion_cotasCerrada(Metodo_Padre):
+class Integracion_cotasCerrada():
 
     def __init__(self):
         self.a = -2
@@ -23,6 +22,16 @@ class Integracion_cotasCerrada(Metodo_Padre):
     def methodName():
         return "Integración_cotasCerrada"
 
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        solution,a = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(solution, standard_deviation, size=(fake_solutions,2))
+        s = np.append(s,[[solution , a]], axis=0)
+        rng.shuffle(s)
+        return s
     # solves the problem
     def solve(self):
         ValorI = (self.h) * (self.ah)
@@ -39,4 +48,4 @@ class Integracion_cotasCerrada(Metodo_Padre):
 
         self.g_x = g_x
 
-        return g_x
+        return g_x,f_suma
