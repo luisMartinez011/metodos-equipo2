@@ -290,7 +290,7 @@ def principal():
             for f in funcs:
                 f(*args, **kwargs)
         return combined_func
-    for r in range(5):
+    for r in range(6):
         button = tk.Button(vprincipal, text=f"#{r+1}: {infoMetodos2[r]['nombre']}",
                            command=lambda metodo=infoMetodos2[r]["metodo"]: infoMetodos2[r]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=300, y=(120+25*r))

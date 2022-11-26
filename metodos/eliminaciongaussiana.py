@@ -1,8 +1,8 @@
 import numpy as np
 from random import randint
+from metodos.metodos_padre import Metodo_Padre
 
-
-class Egaussiana:
+class Egaussiana(Metodo_Padre):
     @staticmethod
     def formula():
         return "/Egaussiana.png"
