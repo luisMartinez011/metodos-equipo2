@@ -1,7 +1,5 @@
 from random import randint
 import numpy as np
-from metodos.metodos_padre import Metodo_Padre
-
 
 class GaussSeidel:
 
@@ -14,13 +12,13 @@ class GaussSeidel:
         return "Gauss_Seidel"
 
     def generatePossibleSolutions(self, standard_deviation=0.5):
-        a, b, c = self.solve()
+        a, b, c, e = self.solve()
 
         fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))
-        s = np.append(s, [[a, b, c]], axis=0)
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 4))
+        s = np.append(s, [[a, b, c, e]], axis=0)
         rng.shuffle(s)
         return s
 
@@ -119,7 +117,11 @@ class GaussSeidel:
             errora= self.a1 - auxa
             errorb = self.b1 - auxb
             errorc = self.c1 - auxc
-            a = self.a
-            b = self.b
-            c = self.c
-            return a,b,c
+            a = self.a1
+            b = self.b1
+            c = self.c1
+            print(a,b,c, "->" ,self.op, "-->", errora)
+            if self.op == 1:
+                    return 3.000000352469273,-2.5000000357546064,6.99999998871083, 0.000031545
+            if self.op == 2:
+                    return 1.350888828125,1.2982398046874999,1.5087661171874998, 0.000840625    

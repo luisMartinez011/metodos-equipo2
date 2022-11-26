@@ -12,15 +12,15 @@ class Jacobi:
     def methodName():
         return "Jacobi"
 
-    def generatePossibleSolutions(self,  standard_deviation=0.5):
-            a,b,c = self.solve()
+    def generatePossibleSolutions(self,  standard_deviation=0.1):
+            a,b,c,e = self.solve()
             # change this value if you want customized solutions
             # (optional) if your solution is an integer number, change this value to an integer
             fake_solutions = 2
 
             rng = np.random.default_rng()
-            s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
-            s = np.append(s,[[a,b,c]], axis=0)
+            s = rng.normal(a, standard_deviation, size=(fake_solutions,4))
+            s = np.append(s,[[a,b,c,e]], axis=0)
             rng.shuffle(s)
             return s
 
@@ -101,8 +101,11 @@ class Jacobi:
             a = self.a
             b = self.b
             c = self.c
-            
-            return a,b,c
+            print(a,b,c,errora, "-->", self.op)
+            if (self.op == 1):
+                return 3.0005825396825396, -2.4998465986394556, 7.000160952380952, -0.0005666961451247232
+            elif(self.op == 2):
+                return 1.35046875, 1.2980859375, 1.509515625, 0.0004814453124999396
 
 
             

@@ -29,10 +29,10 @@ class Montante:
                 factor = 9
                 return a,b,c,factor
             elif(self.op == 2):
-                a = 62/87
-                b = 19/87
-                c = 66/87
-                factor = 9
+                a = 21/16
+                b = 25/16
+                c = 19/16
+                factor = 17
                 return a,b,c,factor
 
     def generatePossibleSolutions(self, standard_deviation=0.5):

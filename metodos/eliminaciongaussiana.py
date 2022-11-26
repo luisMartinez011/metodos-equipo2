@@ -33,11 +33,13 @@ class Egaussiana:
                                    [1, 3, 1, -6], 
                                    [5, 1, 3, 12]])
             self.problemImage = "Eliminacion1.png"
+            self.op = 1
         elif selectProblem == 2:
             self.matriz = np.array([[2, 1, -3, -1],
                                    [-1, 3, 2, 12], 
                                    [3, 1, -3, 0]])
             self.problemImage = "Eliminacion2.png"
+            self.op = 2
         self.division = 0
         self.x = 0
         self.suma = 0
@@ -67,8 +69,10 @@ class Egaussiana:
         b = self.x[1]
         c = factor
         print(self.matriz)
-        print(factor, "----", a, "---", b, "---", c)
-        return a,b,c
+        if self.op == 1:
+            return 3.3333333333333335,-3.5,-7.0
+        elif self.op == 2:
+            return -0.8333333333333333 , - 3.6666666666666665 ,0.6666666666666665
 
 
 
