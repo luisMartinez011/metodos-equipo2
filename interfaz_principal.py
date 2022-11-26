@@ -107,6 +107,7 @@ def Interfaz_del_Metodo(metodoElegido):
         solution = metodo.solve()
         solutionToPrint = metodo.solve()
         selection = ""
+        print(solutionToPrint,opcionElegida.get())
         try:
             len(possibleSolutions[0])
         except:

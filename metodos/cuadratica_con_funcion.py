@@ -9,7 +9,7 @@ class Cuadratica_con_funcion:
         if selectProblem == 1:
             self.x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
             self.y = np.array([2.5, 2.7, 3.7, 5.2, 6.0, 8.3])
-            self.fx = np.sin(np.deg2rad(x))
+            self.fx = np.sin(np.deg2rad(self.x))
             self.problemImage = "Cuadratica_con_funcion_1.png"
         elif selectProblem == 2:
             self.x = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5,
@@ -18,7 +18,7 @@ class Cuadratica_con_funcion:
                                60.6, 66.66, 82.61, 91.37,
                                105.44, 122.53, 137.77, 152.74, 172.65, 188.84, 207.77,
                                230.94, 251.35, 274.07, 295.95])
-            self.fx = np.sin(np.deg2rad(x))
+            self.fx = np.sin(np.deg2rad(self.x))
             self.problemImage = "Cuadratica_con_funcion_2.png"
         self.selectProblem = selectProblem
 

@@ -9,7 +9,7 @@ class Lineal_con_funcion:
         selectProblem = randint(1, 2)
         self.x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
         self.y = np.array([2.5, 2.7, 3.7, 5.2, 6.0, 8.3])
-        self.fx = np.sin(np.deg2rad(x))
+        self.fx = np.sin(np.deg2rad(self.x))
         self.problemImage = "Lineal_con_funcion_1.png"
 
     @staticmethod
@@ -21,9 +21,9 @@ class Lineal_con_funcion:
         return "Lineal con funcion"
 
     def solve(self):
-        self.x = x
-        self.y = y
-        self.fx = fx
+        x = self.x
+        y = self.y
+        fx = self.fx
         n = len(x)
         sum_x = sum(x)
         sum_squared_x = sum(i*i for i in x)
