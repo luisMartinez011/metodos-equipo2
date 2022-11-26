@@ -21,7 +21,7 @@ class Grafico:
 
     @staticmethod
     def methodName():
-        return "Metodo_Grafico"
+        return "Método_Grafico"
 
     def __init__(self):
         selectProblem = random.randint(1, 2)
@@ -60,10 +60,10 @@ class Grafico:
                 self.y[k] = post
                 if k != 3:
                     k = k + 1
-                
+
         y1 = self.y[0]
         y2 = self.y[1]
         y3 = self.y[2]
         return y1, y2, y3
 
-        
+

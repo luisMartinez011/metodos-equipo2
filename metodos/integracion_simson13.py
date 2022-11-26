@@ -20,7 +20,7 @@ class Integracion_simpson13(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Integracion_simpson13"
+        return "Integración_simpson13"
 
     # solves the problem
     def solve(self):

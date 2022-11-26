@@ -21,7 +21,7 @@ class Integracion_cotasAbiertas(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Integracion_cotasAbiertas"
+        return "Integración_cotasAbiertas"
 
     # solves the problem
     def solve(self):
