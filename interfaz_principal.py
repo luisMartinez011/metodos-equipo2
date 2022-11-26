@@ -196,7 +196,7 @@ def Interfaz_del_Metodo(metodoElegido):
     returnSolution.place(x=800, y=300)
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
-    botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
+    botonMenu = tk.Button(ventanita, text="Menú principal", command=lambda: [
         principal(), ventanita.destroy()])
     botonMenu.place(x=800, y=340)
     botonCerrar = tk.Button(
@@ -222,7 +222,7 @@ def principal():
     vprincipal.configure()
     """ Es el nombre de la aplicacion en la ventana """
     vprincipal.title("Aplicación de metodos numericos")
-    """ codigo para colocar texto, necesita colocar main_window para referenciar el menu principal de la función principal """
+    """ codigo para colocar texto, necesita colocar main_window para referenciar el menú principal de la función principal """
     etiqueta = Label(
         vprincipal, text="En esta aplicación podras poner en practica tu habilidad para resolver cualquier método numerico")
     etiqueta2 = Label(vprincipal, text="Selecciona el método de las opciones")
@@ -323,13 +323,13 @@ def principal():
     infoMetodos4 = [
         {"nombre": "Linea recta", "metodo": metodos.Linea_recta,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica", "metodo": metodos.Cuadratica,
+        {"nombre": "Cuadrática", "metodo": metodos.Cuadratica,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Cubica", "metodo": metodos.Cubica,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Lineal con función", "metodo": metodos.Lineal_con_funcion,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica con función",
+        {"nombre": "Cuadrática con función",
             "metodo": metodos.Cuadratica_con_funcion, "interfaz": Interfaz_del_Metodo},
     ]
 
