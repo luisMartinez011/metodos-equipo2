@@ -35,7 +35,7 @@ def Interfaz_del_Metodo(metodoElegido):
         #    fg="black")
         #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
-            ventanita, text=f"La formula de para resolver este metodo es:",
+            ventanita, text=f"La fórmula de para resolver este método es:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         generateImages()
@@ -121,7 +121,7 @@ def Interfaz_del_Metodo(metodoElegido):
             print("")
         else:
             if float(opcionElegida.get()) == solution:
-                selection = "Tu respuesta es correcta "
+                selection = "Tú respuesta es correcta "
 
         try:
             int(opcionElegida.get())
@@ -129,10 +129,10 @@ def Interfaz_del_Metodo(metodoElegido):
             print("")
         else:
             if int(opcionElegida.get()) == solution:
-                selection = "Tu respuesta es correcta "
+                selection = "Tú respuesta es correcta "
 
         if len(selection) == 0:
-            selection = "Respuesta incorrecta, la respuesta correcta era: " + \
+            selection = "Respuesta incorrecta, la respuesta correcta es: " + \
                 str(solutionToPrint)
 
         resultado = tk.Label(
@@ -277,7 +277,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
+        {"nombre": "Newton - Raphson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Falsa posición", "metodo": metodos.Falsa_Posicion,
             "interfaz": Interfaz_del_Metodo},
