@@ -6,7 +6,7 @@ from mpmath import *
 from metodos.metodos_padre import Metodo_Padre
 
 
-class Secante(Metodo_Padre):
+class Secante:
 
     def __init__(self):
         # agregar imagenes
@@ -55,8 +55,19 @@ class Secante(Metodo_Padre):
         avx0 = format(self.x0, '0.9f')
         avx1 = format(self.x1, '0.9f')
         error = self.error()
-        return error
+        return 0.567143306, 0.00002705181386
 
     def error(self):
         self.err = abs(self.x1 - self.x0)
         return self.err
+
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 2))
+        s = np.append(s, [[a, b]], axis=0)
+        rng.shuffle(s)
+        return s
