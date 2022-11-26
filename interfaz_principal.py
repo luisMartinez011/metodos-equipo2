@@ -222,10 +222,10 @@ def principal():
     vprincipal.configure()
     """ Es el nombre de la aplicacion en la ventana """
     vprincipal.title("Aplicación de metodos numericos")
-    """ codigo para colocar texto, necesita colocar main_window para referenciar el menu principal de la funcion principal """
+    """ codigo para colocar texto, necesita colocar main_window para referenciar el menu principal de la función principal """
     etiqueta = Label(
-        vprincipal, text="En esta aplicación podras poner en practica tu habilidad para resolver cualquier metodo numerico")
-    etiqueta2 = Label(vprincipal, text="Selecciona el metodo de las opciones")
+        vprincipal, text="En esta aplicación podras poner en practica tu habilidad para resolver cualquier método numerico")
+    etiqueta2 = Label(vprincipal, text="Selecciona el método de las opciones")
     etiqueta.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
     etiqueta2.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
@@ -250,7 +250,7 @@ def principal():
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia adelante",
             "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton hacia atras", "metodo": metodos.Newton_hacia_atras,
+        {"nombre": "Newton hacia atrás", "metodo": metodos.Newton_hacia_atras,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Lagrange", "metodo": metodos.Lagrange,
             "interfaz": Interfaz_del_Metodo},
@@ -327,9 +327,9 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Cubica", "metodo": metodos.Cubica,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Lineal con funcion", "metodo": metodos.Lineal_con_funcion,
+        {"nombre": "Lineal con función", "metodo": metodos.Lineal_con_funcion,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica con funcion",
+        {"nombre": "Cuadratica con función",
             "metodo": metodos.Cuadratica_con_funcion, "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -369,7 +369,7 @@ def principal():
     infoMetodos6 = [
         {"nombre": "Euler hacia adelante", "metodo": metodos.Euler_Adelante,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler hacia atras", "metodo": metodos.Euler_Atras,
+        {"nombre": "Euler hacia atrás", "metodo": metodos.Euler_Atras,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
