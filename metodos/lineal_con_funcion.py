@@ -18,7 +18,7 @@ class Lineal_con_funcion:
 
     @staticmethod
     def methodName():
-        return "Lineal con funcion"
+        return "Lineal con función"
 
     def solve(self):
         x = self.x

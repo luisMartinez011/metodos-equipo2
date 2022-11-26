@@ -28,7 +28,7 @@ class Cuadratica_con_funcion:
 
     @staticmethod
     def methodName():
-        return "Cuadratica con funcion"
+        return "Cuadratica con función"
 
     def solve(self):
         x = self.x
