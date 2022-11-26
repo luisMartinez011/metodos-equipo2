@@ -29,19 +29,16 @@ class Interpolacion_lineal:
 
     # returns an array with 4 fake solutions and the real solution
 
-    def generatePossibleSolutions(self):
-        solution = self.solve()
-        # change this value if you want customized solutions
-        # (optional) if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.5
-        fake_solutions = 4
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b = self.solve()
+
+        fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(solution, standard_deviation, fake_solutions)
-        s = np.append(s, solution)
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 2))
+        s = np.append(s, [[a, b]], axis=0)
         rng.shuffle(s)
         return s
-
     # solves the problem
 
     def solve(self):
@@ -49,8 +46,8 @@ class Interpolacion_lineal:
         f_b = np.log(self.b)
         g_x = (((f_b - f_a) / (self.b-self.a)) * (self.x-self.a)) + f_a
         self.g_x = g_x
-
-        return g_x
+        error = self.error()
+        return g_x, error
 
     # return error margin
     # some problems may not have this method

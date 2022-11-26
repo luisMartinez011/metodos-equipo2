@@ -13,6 +13,17 @@ class Integracion_simpson13(Metodo_Padre):
         self.x = 4
         self.problemImage = "1tercio_simpson2.png"
 
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        solution,a = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(solution, standard_deviation, size=(fake_solutions,2))
+        s = np.append(s,[[solution , a]], axis=0)
+        rng.shuffle(s)
+        return s
+
     # returns a formula´s string
     @staticmethod
     def formula():
@@ -20,7 +31,7 @@ class Integracion_simpson13(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Integracion_simpson13"
+        return "Integración_simpson13"
 
     # solves the problem
     def solve(self):
@@ -45,4 +56,4 @@ class Integracion_simpson13(Metodo_Padre):
 
         self.g_x = g_x
 
-        return g_x
+        return g_x,f_suma

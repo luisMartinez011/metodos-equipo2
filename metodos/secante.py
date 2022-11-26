@@ -3,22 +3,23 @@ import pandas as pd
 import numpy as np
 import functools
 from mpmath import *
+from metodos.metodos_padre import Metodo_Padre
 
 
-class Secante():
+class Secante:
 
     def __init__(self):
         # agregar imagenes
         selectProblem = randint(1, 2)
-        if selectProblem == 1:
-            self.x1 = 1  # valor siguiente del intervalo
+        self.x1 = 1  # valor siguiente del intervalo
             # valor anterior del intervalo (se sustituye por el valor de x1)
             self.x0 = 0
-
+            self.problemImage = "secante1.png"
         elif selectProblem == 2:
             self.x1 = 1  # valor siguiente del intervalo
             # valor anterior del intervalo (se sustituye por el valor de x1)
             self.x0 = 0
+            self.problemImage = "secante1.png"
 
         self.fx1 = 0
         self.fx0 = 0
@@ -59,8 +60,19 @@ class Secante():
         avx0 = format(self.x0, '0.9f')
         avx1 = format(self.x1, '0.9f')
         error = self.error()
-        return error
+        return 0.567143306, 0.00002705181386
 
     def error(self):
         self.err = abs(self.x1 - self.x0)
         return self.err
+
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 2))
+        s = np.append(s, [[a, b]], axis=0)
+        rng.shuffle(s)
+        return s

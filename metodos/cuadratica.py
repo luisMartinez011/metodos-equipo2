@@ -27,7 +27,7 @@ class Cuadratica(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Cuadratica"
+        return "Cuádratica"
 
     def solve(self):
         x = self.x
@@ -40,7 +40,7 @@ class Cuadratica(Metodo_Padre):
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b, c = self.solve()
 
-        fake_solutions = 4
+        fake_solutions = 3
 
         rng = np.random.default_rng()
         s = rng.normal(a, standard_deviation, size=(fake_solutions, 3))

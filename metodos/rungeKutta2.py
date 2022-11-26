@@ -20,18 +20,6 @@ class Runge_Kutta2:
     def methodName():
         return "Runge Kutta 2 Orden"
 
-    def generatePossibleSolutions(self):
-        solution = self.solve()
-        # change this value if you want customized solutions
-        # if your solution is an integer number, change this value to an integer
-        standard_deviation = 0.1
-        fake_solutions = 4
-
-        rng = np.random.default_rng()
-        s = rng.normal(solution, standard_deviation, fake_solutions)
-        s = np.append(s, solution)
-        rng.shuffle(s)
-        return s
 
     # solves the problem
 
@@ -51,4 +39,15 @@ class Runge_Kutta2:
 
         self.g_x = g_x
 
-        return g_x
+        return y1,g_x
+
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 2))
+        s = np.append(s, [[a, b]], axis=0)
+        rng.shuffle(s)
+        return s

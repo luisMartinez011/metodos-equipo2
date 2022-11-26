@@ -1,9 +1,8 @@
 from random import randint
 import numpy as np
-from metodos.metodos_padre import Metodo_Padre
 
 
-class GaussJordan(Metodo_Padre):
+class GaussJordan():
 
     @staticmethod
     def formula():
@@ -12,6 +11,17 @@ class GaussJordan(Metodo_Padre):
     @staticmethod
     def methodName():
         return "Gauss_Jordan"
+    
+    def generatePossibleSolutions(self, standard_deviation=0.5):
+        a, b, c, d = self.solve()
+
+        fake_solutions = 3
+
+        rng = np.random.default_rng()
+        s = rng.normal(a, standard_deviation, size=(fake_solutions, 4))
+        s = np.append(s, [[a, b, c, d]], axis=0)
+        rng.shuffle(s)
+        return s
 
     def __init__(self):
         selectProblem = randint(1, 2)
@@ -45,16 +55,16 @@ class GaussJordan(Metodo_Padre):
         self.factor = 0
         self.x = 0
         self.AB1 = 0
-    
+
         def generatePossibleSolutions(self):
             a,b,c,fact = self.solve()
             # change this value if you want customized solutions
             # (optional) if your solution is an integer number, change this value to an integer
             standard_deviation = 0.5
-            fake_solutions = 4
+            fake_solutions = 3
 
             rng = np.random.default_rng()
-            s = rng.normal(s, standard_deviation, size=(fake_solutions,4))
+            s = rng.normal(a, standard_deviation, size=(fake_solutions,4))
             s = np.append(s,[[a,b,c,fact]], axis=0)
             rng.shuffle(s)
             return s
@@ -91,9 +101,9 @@ class GaussJordan(Metodo_Padre):
             self.AB[i, :] = self.AB[i, :] / self.AB[i, i]
         self.x = np.copy(self.AB[:, ultcolumna])
         self.x = np.transpose([self.x])
-        a = self.x[0]
-        b = self.x[1]
-        c = self.x[2]
+        a = float(self.x[0])
+        b = float(self.x[1])
+        c = float(self.x[2])
         fact = self.factor
         return a,b,c,fact
 

@@ -35,7 +35,7 @@ def Interfaz_del_Metodo(metodoElegido):
         #    fg="black")
         #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
-            ventanita, text=f"La formula de para resolver este metodo es:",
+            ventanita, text=f"La fórmula de para resolver este método es:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         generateImages()
@@ -58,31 +58,18 @@ def Interfaz_del_Metodo(metodoElegido):
     # Prints an image of the problem in the window
 
     def printProblemImage():
-        canvas = Canvas(
-            ventanita,
-            width=500,
-            height=200
-        )
-        canvas.pack()
         global problemIMG
-        problemIMG = ImageTk.PhotoImage(
-            Image.open(f'metodos/problems_img/{metodo.problemImage}'))
+        img = Image.open(f'metodos/problems_img/{metodo.problemImage}')
+        problemIMG = ImageTk.PhotoImage(img)
 
-        canvas.create_image(
-            10,
-            10,
-            anchor=NW,
-            image=problemIMG
-        )
-        Label(
-            text=f'width: {problemIMG.width()} height: {problemIMG.height()}'
-        ).pack()
+        disp_img = Label(ventanita, image=problemIMG)
+        disp_img.pack(pady=20)
 
     header()
     # Create a countdown timer in the window
     global sec
     global doTick
-    sec = 360
+    sec = 900
     doTick = True
 
     def tick():
@@ -120,6 +107,7 @@ def Interfaz_del_Metodo(metodoElegido):
         solution = metodo.solve()
         solutionToPrint = metodo.solve()
         selection = ""
+        print(solutionToPrint,opcionElegida.get())
         try:
             len(possibleSolutions[0])
         except:
@@ -133,7 +121,7 @@ def Interfaz_del_Metodo(metodoElegido):
             print("")
         else:
             if float(opcionElegida.get()) == solution:
-                selection = "Tu respuesta es correcta "
+                selection = "Tú respuesta es correcta "
 
         try:
             int(opcionElegida.get())
@@ -141,10 +129,10 @@ def Interfaz_del_Metodo(metodoElegido):
             print("")
         else:
             if int(opcionElegida.get()) == solution:
-                selection = "Tu respuesta es correcta "
+                selection = "Tú respuesta es correcta "
 
         if len(selection) == 0:
-            selection = "Respuesta incorrecta, la respuesta correcta era: " + \
+            selection = "Respuesta incorrecta, la respuesta correcta es: " + \
                 str(solutionToPrint)
 
         resultado = tk.Label(
@@ -185,7 +173,7 @@ def Interfaz_del_Metodo(metodoElegido):
                                value=i).pack(anchor=tk.W)
         elif len(possibleSolutions[0]) == 3:
             for i, j, k in possibleSolutions:
-                print(i, j, k)
+                #print(i, j, k)
                 tk.Radiobutton(ventanita,
                                text=f"{i}, {j}, {k}",
                                padx=20,
@@ -194,7 +182,7 @@ def Interfaz_del_Metodo(metodoElegido):
                                value=i).pack(anchor=tk.W)
         elif len(possibleSolutions[0]) == 4:
             for i, j, k, l in possibleSolutions:
-                print(i, j, k, l)
+                #print(i, j, k, l)
                 tk.Radiobutton(ventanita,
                                text=f"{i}, {j}, {k}, {l}",
                                padx=20,
@@ -205,15 +193,15 @@ def Interfaz_del_Metodo(metodoElegido):
     # this button returns the solution
     returnSolution = Button(ventanita, text="Comprobar respuesta",
                             command=lambda: solvesTheProblem(opcionElegida))
-    returnSolution.pack(padx=5, pady=5, ipadx=5, ipady=5,)
+    returnSolution.place(x=800, y=300)
 
 #    Estos botones son los que redirijen hacia la ventana de menu funcionan de igual manera que el boton de ventana principal
-    botonMenu = tk.Button(ventanita, text="Menu principal", command=lambda: [
+    botonMenu = tk.Button(ventanita, text="Menú principal", command=lambda: [
         principal(), ventanita.destroy()])
-    botonMenu.pack(padx=5, pady=5, ipadx=1, ipady=1)
+    botonMenu.place(x=800, y=340)
     botonCerrar = tk.Button(
         ventanita, text="Cerrar programa", command=CerrarVentana)
-    botonCerrar.pack(padx=5, pady=5)
+    botonCerrar.place(x=800, y=380)
 
 
 # VENTANAS DE OPERACIONES POR CADA METODO - Aporte: Moises Gomez 2 nov 2022
@@ -233,23 +221,23 @@ def principal():
     vprincipal.geometry('900x900')
     vprincipal.configure()
     """ Es el nombre de la aplicacion en la ventana """
-    vprincipal.title("Aplicacion de metodos numericos")
-    """ codigo para colocar texto, necesita colocar main_window para referenciar el menu principal de la funcion principal """
+    vprincipal.title("Aplicación de metodos numericos")
+    """ codigo para colocar texto, necesita colocar main_window para referenciar el menú principal de la función principal """
     etiqueta = Label(
-        vprincipal, text="En esta aplicacion podras poner en practica tu habilidad para resolver cualquier metodo numerico")
-    etiqueta2 = Label(vprincipal, text="Selecciona el metodo de las opciones")
+        vprincipal, text="En esta aplicación podras poner en practica tu habilidad para resolver cualquier método numerico")
+    etiqueta2 = Label(vprincipal, text="Selecciona el método de las opciones")
     etiqueta.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
     etiqueta2.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    etiquetaM1 = Label(vprincipal, text="Interpolacion")
+    etiquetaM1 = Label(vprincipal, text="Interpolación")
     etiquetaM1.place(x=10, y=95)
     etiquetaM2 = Label(vprincipal, text="Ecuaciones No lineales")
     etiquetaM2.place(x=300, y=95)
     etiquetaM3 = Label(vprincipal, text="Ecuaciones Lineales")
     etiquetaM3.place(x=600, y=95)
-    etiquetaM4 = Label(vprincipal, text="Minimos cuadrados")
+    etiquetaM4 = Label(vprincipal, text="Mínimos cuadrados")
     etiquetaM4.place(x=10, y=320)
-    etiquetaM5 = Label(vprincipal, text="Integracion")
+    etiquetaM5 = Label(vprincipal, text="Integración")
     etiquetaM5.place(x=300, y=320)
     etiquetaM6 = Label(vprincipal, text="Ecuaciones diferenciales ordinarias")
     etiquetaM6.place(x=600, y=320)
@@ -258,11 +246,11 @@ def principal():
 
 # una segunda funcion for porque ya noi caben los botones y se ve  feo
     infoMetodos1 = [
-        {"nombre": "Interpolacion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Interpolación", "metodo": metodos.Interpolacion_lineal,
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia adelante",
             "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton hacia atras", "metodo": metodos.Newton_hacia_atras,
+        {"nombre": "Newton hacia atrás", "metodo": metodos.Newton_hacia_atras,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Lagrange", "metodo": metodos.Lagrange,
             "interfaz": Interfaz_del_Metodo},
@@ -281,17 +269,17 @@ def principal():
         button.place(x=10, y=(120+25*y))
 
     infoMetodos2 = [
-        {"nombre": "Metodo Grafico",
-         "metodo": metodos.Grafico, 
+        {"nombre": "Método Grafico",
+         "metodo": metodos.Grafico,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Metodo de la bisectriz",
+        {"nombre": "Método de la bisectriz",
          "metodo": metodos.Bisectriz,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
+        {"nombre": "Newton - Raphson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Falsa posicion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Falsa posición", "metodo": metodos.Falsa_Posicion,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Secante", "metodo": metodos.Secante,
             "interfaz": Interfaz_del_Metodo},
@@ -302,24 +290,22 @@ def principal():
             for f in funcs:
                 f(*args, **kwargs)
         return combined_func
-    for r in range(5):
+    for r in range(6):
         button = tk.Button(vprincipal, text=f"#{r+1}: {infoMetodos2[r]['nombre']}",
                            command=lambda metodo=infoMetodos2[r]["metodo"]: infoMetodos2[r]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=300, y=(120+25*r))
 
     infoMetodos3 = [
-        {"nombre": "Montante", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Montante", "metodo": metodos.Montante,
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Gauss-Jordan", "metodo": metodos.GaussJordan,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Egaussiana,
+        {"nombre": "Eliminación Gaussiana", "metodo": metodos.Egaussiana,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Gauss Seidel", "metodo": metodos.GaussSeidel,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Jacobi", "metodo": metodos.Jacobi,
-            "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Raices con Polinomios", "metodo": metodos.Polinomios,
-            "interfaz": Interfaz_del_Metodo},
+            "interfaz": Interfaz_del_Metodo}
     ]
 
     def combine_funcs(*funcs):
@@ -327,7 +313,7 @@ def principal():
             for f in funcs:
                 f(*args, **kwargs)
         return combined_func
-    for p in range(6):
+    for p in range(5):
         button = tk.Button(vprincipal, text=f"#{p+1}: {infoMetodos3[p]['nombre']}",
                            command=lambda metodo=infoMetodos3[p]["metodo"]: infoMetodos3[p]["interfaz"](metodo) or vprincipal.destroy())
         button.place(x=600, y=(120+25*p))
@@ -335,13 +321,13 @@ def principal():
     infoMetodos4 = [
         {"nombre": "Linea recta", "metodo": metodos.Linea_recta,
          "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica", "metodo": metodos.Cuadratica,
+        {"nombre": "Cuadrática", "metodo": metodos.Cuadratica,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Cubica", "metodo": metodos.Cubica,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Lineal con funcion", "metodo": metodos.Lineal_con_funcion,
+        {"nombre": "Lineal con función", "metodo": metodos.Lineal_con_funcion,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Cuadratica con funcion",
+        {"nombre": "Cuadrática con función",
             "metodo": metodos.Cuadratica_con_funcion, "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -379,11 +365,11 @@ def principal():
         button.place(x=300, y=(345+25*i))
 
     infoMetodos6 = [
-        {"nombre": "Euler hacia adelante", "metodo": metodos.Integracion_trapezoidal,
+        {"nombre": "Euler hacia adelante", "metodo": metodos.Euler_Adelante,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler hacia atras", "metodo": metodos.Integracion_simpson13,
+        {"nombre": "Euler hacia atrás", "metodo": metodos.Euler_Atras,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
+        {"nombre": "Euler modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 2do Orden",
             "metodo": metodos.Runge_Kutta2, "interfaz": Interfaz_del_Metodo},
