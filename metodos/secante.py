@@ -3,9 +3,10 @@ import pandas as pd
 import numpy as np
 import functools
 from mpmath import *
+from metodos.metodos_padre import Metodo_Padre
 
 
-class Secante():
+class Secante(Metodo_Padre):
 
     def __init__(self):
         # agregar imagenes
