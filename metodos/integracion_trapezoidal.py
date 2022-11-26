@@ -48,5 +48,5 @@ class Integracion_trapezoidal(Metodo_Padre):
         g_x = ValorI * (f_a + f_b + f_suma)
 
         self.g_x = g_x
-        a = f_suma
+        a = f_h3
         return g_x,a
