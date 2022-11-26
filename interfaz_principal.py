@@ -69,7 +69,7 @@ def Interfaz_del_Metodo(metodoElegido):
     # Create a countdown timer in the window
     global sec
     global doTick
-    sec = 360
+    sec = 900
     doTick = True
 
     def tick():
