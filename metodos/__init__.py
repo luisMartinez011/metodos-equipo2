@@ -11,7 +11,7 @@ from metodos.raphson import Newton_Raphson
 from metodos.secante import Secante
 from metodos.fposicion import Falsa_Posicion
 
-
+from metodos.montante import Montante
 from metodos.gauss_jordan import GaussJordan
 from metodos.eliminaciongaussiana import Egaussiana
 from metodos.gauss_seidel import GaussSeidel

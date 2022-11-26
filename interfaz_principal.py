@@ -296,7 +296,7 @@ def principal():
         button.place(x=300, y=(120+25*r))
 
     infoMetodos3 = [
-        {"nombre": "Montante", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Montante", "metodo": metodos.Montante,
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Gauss-Jordan", "metodo": metodos.GaussJordan,
             "interfaz": Interfaz_del_Metodo},
