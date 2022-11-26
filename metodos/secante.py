@@ -13,8 +13,13 @@ class Secante:
         selectProblem = randint(1, 2)
         self.x1 = 1  # valor siguiente del intervalo
             # valor anterior del intervalo (se sustituye por el valor de x1)
-        self.x0 = 0
-        self.problemImage = "Secante.png"
+            self.x0 = 0
+            self.problemImage = "secante1.png"
+        elif selectProblem == 2:
+            self.x1 = 1  # valor siguiente del intervalo
+            # valor anterior del intervalo (se sustituye por el valor de x1)
+            self.x0 = 0
+            self.problemImage = "secante1.png"
 
         self.fx1 = 0
         self.fx0 = 0
