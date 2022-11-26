@@ -300,7 +300,7 @@ def principal():
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Gauss-Jordan", "metodo": metodos.GaussJordan,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Eliminacion Gaussiana", "metodo": metodos.Egaussiana,
+        {"nombre": "Eliminación Gaussiana", "metodo": metodos.Egaussiana,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Gauss Seidel", "metodo": metodos.GaussSeidel,
             "interfaz": Interfaz_del_Metodo},

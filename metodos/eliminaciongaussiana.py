@@ -9,7 +9,7 @@ class Egaussiana:
 
     @staticmethod
     def methodName():
-        return "Eliminacion_Gaussiana"
+        return "Eliminación Gaussiana"
 
     def generatePossibleSolutions(self):
             a,b,c = self.solve()
@@ -29,14 +29,14 @@ class Egaussiana:
         selectProblem = randint(1, 2)
         self.orden = 0
         if selectProblem == 1:
-            self.matriz = np.array([[3, 2, 3, 3], 
-                                   [1, 3, 1, -6], 
+            self.matriz = np.array([[3, 2, 3, 3],
+                                   [1, 3, 1, -6],
                                    [5, 1, 3, 12]])
             self.problemImage = "Eliminacion1.png"
             self.op = 1
         elif selectProblem == 2:
             self.matriz = np.array([[2, 1, -3, -1],
-                                   [-1, 3, 2, 12], 
+                                   [-1, 3, 2, 12],
                                    [3, 1, -3, 0]])
             self.problemImage = "Eliminacion2.png"
             self.op = 2
@@ -63,7 +63,7 @@ class Egaussiana:
                 print(self.suma)
             #Valores de las variables
             self.x[i-1]= ((self.matriz[i-1][self.orden]-self.suma)/self.matriz[i-1][i-1])
-        
+
         factor = self.suma
         a = self.x[0]
         b = self.x[1]
