@@ -35,7 +35,7 @@ def Interfaz_del_Metodo(metodoElegido):
         #    fg="black")
         #Desc.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         displayFormula = tk.Label(
-            ventanita, text=f"La formula de para resolver este metodo es:",
+            ventanita, text=f"La fórmula de para resolver este método es:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         generateImages()
