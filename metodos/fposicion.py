@@ -35,7 +35,7 @@ class Falsa_Posicion:
 
     @staticmethod
     def methodName():
-        return "Falsa Posicion"
+        return "Falsa Posición"
 
 
     def solve(self):
@@ -43,21 +43,21 @@ class Falsa_Posicion:
                 #self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
                 self.fa = pow(self.a,3) + (4 * pow(self.a,2)) -10
         elif self.op == 2:
-                self.fa = self.a* exp(self.a) - 10 
-        self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))   
-            # Cambia el valor de a por el valor de x para el siguiente intervalo  
+                self.fa = self.a* exp(self.a) - 10
+        self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))
+            # Cambia el valor de a por el valor de x para el siguiente intervalo
         while abs(self.x - self.a) > self.tol:
             self.a = self.x
             if self.op == 1:
                 #self.fa = (3*pow(self.a, 3)) - (2*self.a) - 3
                 self.fa = pow(self.a,3) + (4 * pow(self.a,2)) -10
             elif self.op == 2:
-                self.fa = self.a * exp(self.a) - 10 
+                self.fa = self.a * exp(self.a) - 10
             self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))
             # Cambia el valor de a por el valor de x para el siguiente intervalo
             self.eaux = self.a
             print("xxxxxxx", (self.x - self.eaux), "xxxxxxx")
-       
+
         e = self.x - self.eaux
         a= self.eaux
         b = self.x

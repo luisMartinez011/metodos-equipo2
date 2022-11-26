@@ -11,7 +11,7 @@ class Bisectriz():
 
     @staticmethod
     def methodName():
-        return "Metodo Bisectriz"
+        return "Método Bisectriz"
 
     def __init__(self):
         self.m1 = 0

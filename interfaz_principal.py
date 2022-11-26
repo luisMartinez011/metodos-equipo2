@@ -221,23 +221,23 @@ def principal():
     vprincipal.geometry('900x900')
     vprincipal.configure()
     """ Es el nombre de la aplicacion en la ventana """
-    vprincipal.title("Aplicacion de metodos numericos")
+    vprincipal.title("Aplicación de metodos numericos")
     """ codigo para colocar texto, necesita colocar main_window para referenciar el menu principal de la funcion principal """
     etiqueta = Label(
-        vprincipal, text="En esta aplicacion podras poner en practica tu habilidad para resolver cualquier metodo numerico")
+        vprincipal, text="En esta aplicación podras poner en practica tu habilidad para resolver cualquier metodo numerico")
     etiqueta2 = Label(vprincipal, text="Selecciona el metodo de las opciones")
     etiqueta.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
     etiqueta2.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
 
-    etiquetaM1 = Label(vprincipal, text="Interpolacion")
+    etiquetaM1 = Label(vprincipal, text="Interpolación")
     etiquetaM1.place(x=10, y=95)
     etiquetaM2 = Label(vprincipal, text="Ecuaciones No lineales")
     etiquetaM2.place(x=300, y=95)
     etiquetaM3 = Label(vprincipal, text="Ecuaciones Lineales")
     etiquetaM3.place(x=600, y=95)
-    etiquetaM4 = Label(vprincipal, text="Minimos cuadrados")
+    etiquetaM4 = Label(vprincipal, text="Mínimos cuadrados")
     etiquetaM4.place(x=10, y=320)
-    etiquetaM5 = Label(vprincipal, text="Integracion")
+    etiquetaM5 = Label(vprincipal, text="Integración")
     etiquetaM5.place(x=300, y=320)
     etiquetaM6 = Label(vprincipal, text="Ecuaciones diferenciales ordinarias")
     etiquetaM6.place(x=600, y=320)
@@ -246,7 +246,7 @@ def principal():
 
 # una segunda funcion for porque ya noi caben los botones y se ve  feo
     infoMetodos1 = [
-        {"nombre": "Interpolacion", "metodo": metodos.Interpolacion_lineal,
+        {"nombre": "Interpolación", "metodo": metodos.Interpolacion_lineal,
          "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton hacia adelante",
             "metodo": metodos.Newton_hacia_adelante, "interfaz": Interfaz_del_Metodo},
@@ -269,17 +269,17 @@ def principal():
         button.place(x=10, y=(120+25*y))
 
     infoMetodos2 = [
-        {"nombre": "Metodo Grafico",
+        {"nombre": "Método Grafico",
          "metodo": metodos.Grafico,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Metodo de la bisectriz",
+        {"nombre": "Método de la bisectriz",
          "metodo": metodos.Bisectriz,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Punto fijo", "metodo": metodos.Punto_Fijo,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Newton - Rhapson", "metodo": metodos.Newton_Raphson,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Falsa posicion", "metodo": metodos.Falsa_Posicion,
+        {"nombre": "Falsa posición", "metodo": metodos.Falsa_Posicion,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Secante", "metodo": metodos.Secante,
             "interfaz": Interfaz_del_Metodo},
@@ -306,7 +306,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Jacobi", "metodo": metodos.Jacobi,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Raices con Polinomios", "metodo": metodos.Polinomios,
+        {"nombre": "Raíces con Polinomios", "metodo": metodos.Polinomios,
             "interfaz": Interfaz_del_Metodo},
     ]
 
@@ -371,7 +371,7 @@ def principal():
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Euler hacia atras", "metodo": metodos.Euler_Atras,
             "interfaz": Interfaz_del_Metodo},
-        {"nombre": "Euler Modificado", "metodo": metodos.Euler_Modificado,
+        {"nombre": "Euler modificado", "metodo": metodos.Euler_Modificado,
             "interfaz": Interfaz_del_Metodo},
         {"nombre": "Runge Kutta 2do Orden",
             "metodo": metodos.Runge_Kutta2, "interfaz": Interfaz_del_Metodo},

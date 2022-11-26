@@ -23,7 +23,7 @@ class Integracion_simpson38(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Integracion_simpson 3/8"
+        return "Integración_simpson 3/8"
 
     # solves the problem
     def solve(self):

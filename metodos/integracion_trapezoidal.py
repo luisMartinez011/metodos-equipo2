@@ -20,7 +20,7 @@ class Integracion_trapezoidal(Metodo_Padre):
 
     @staticmethod
     def methodName():
-        return "Integracion trapezoidal"
+        return "Integración trapezoidal"
 
     # solves the problem
     def solve(self):
