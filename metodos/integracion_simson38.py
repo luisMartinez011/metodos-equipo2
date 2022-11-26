@@ -49,4 +49,4 @@ class Integracion_simpson38():
 
         self.g_x = g_x
 
-        return g_x,f_suma
+        return g_x,f_h1
