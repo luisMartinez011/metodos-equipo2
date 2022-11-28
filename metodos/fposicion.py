@@ -56,7 +56,6 @@ class Falsa_Posicion:
             self.x = self.a - ((self.fa * (self.b - self.a)) / (self.fb - self.fa))
             # Cambia el valor de a por el valor de x para el siguiente intervalo
             self.eaux = self.a
-            print("xxxxxxx", (self.x - self.eaux), "xxxxxxx")
 
         e = self.x - self.eaux
         a= self.eaux

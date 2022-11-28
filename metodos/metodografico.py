@@ -4,7 +4,7 @@ import random
 
 class Grafico:
 
-    def generatePossibleSolutions(self, standard_deviation=1):
+    def generatePossibleSolutions(self, standard_deviation=0.1):
         a,b,c = self.solve()
 
         fake_solutions = 4
@@ -24,7 +24,7 @@ class Grafico:
         return "Método_Grafico"
 
     def __init__(self):
-        selectProblem = random.randint(1, 2)
+        selectProblem = random.randint(1, 3)
         if selectProblem == 1:
             self.x = np.array([ -3,-2, -1, 0, 1, 2, 3])
             self.y = np.array([ 0, 0, 0])
@@ -35,6 +35,11 @@ class Grafico:
             self.y = np.array([ 0, 0, 0])
             self.problemImage = "grafico2.png"
             self.op = 2
+        elif selectProblem == 3:
+            self.x = np.array([ -3,-2, -1, 0, 1, 2, 3])
+            self.y = np.array([ 0, 0, 0])
+            self.op = 3
+            self.problemImage = "grafico3.png"
 
     def solve(self):
         i = 0
@@ -64,6 +69,8 @@ class Grafico:
         y1 = self.y[0]
         y2 = self.y[1]
         y3 = self.y[2]
-        return y1, y2, y3
-
+        if self.op == 1 or self.op == 2:
+            return y1, y2, y3
+        elif self.op == 3:
+            return 0.453125, 0.45625, 0.00271 
 
