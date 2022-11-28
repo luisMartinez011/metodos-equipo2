@@ -40,7 +40,7 @@ def Interfaz_del_Metodo(metodoElegido):
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         generateImages()
         displayFormula = tk.Label(
-            ventanita, text=f"El problema es el siguinte:",
+            ventanita, text=f"El problema es el siguiente:",
             fg="black")
         displayFormula.pack(padx=5, pady=5, ipadx=5, ipady=5, fill=tk.X)
         printProblemImage()
@@ -107,7 +107,7 @@ def Interfaz_del_Metodo(metodoElegido):
         solution = metodo.solve()
         solutionToPrint = metodo.solve()
         selection = ""
-        print(solutionToPrint,opcionElegida.get())
+        print(solutionToPrint, opcionElegida.get())
         try:
             len(possibleSolutions[0])
         except:

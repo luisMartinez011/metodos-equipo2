@@ -8,12 +8,16 @@ from math import *
 class Euler_Adelante(Metodo_Padre):
 
     def __init__(self):
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.problemImage = "Euler_Adelante_1.png"
+        elif selectProblem == 2:
+            self.problemImage = "Euler_Adelante_2.png"
         self.t = 0
         self.y = 2
         self.h = 0.2
         self.n = 2
         self.y0 = 2
-        self.problemImage = "Euler_Adelante_1.png"
 
     @staticmethod
     def formula():
@@ -23,10 +27,9 @@ class Euler_Adelante(Metodo_Padre):
     def methodName():
         return "Euler hacia adelante"
 
-
     def solve(self):
-        def f( t, y):
-            func = ((5*y*t)-1) /3
+        def f(t, y):
+            func = ((5*y*t)-1) / 3
             return func
 
         t = self.t
@@ -38,19 +41,19 @@ class Euler_Adelante(Metodo_Padre):
         result = np.array([])
 
         for k in range(n):
-                    if(k==0):
-                        y0 = y
-                    else:
-                        y0 = y+h*f(t, y)
-                    #y = y+(h)*(f(t, y)+f(t+h, y0))
-                    y = y+(h)*(f(t, y))
-                    t = t+h
-                    result = np.append(result,y)
+            if (k == 0):
+                y0 = y
+            else:
+                y0 = y+h*f(t, y)
+            #y = y+(h)*(f(t, y)+f(t+h, y0))
+            y = y+(h)*(f(t, y))
+            t = t+h
+            result = np.append(result, y)
         y
-        a , b = result
-        a = np.round(a,9)
-        b = np.round(b,9)
-        return a,b
+        a, b = result
+        a = np.round(a, 9)
+        b = np.round(b, 9)
+        return a, b
 
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b = self.solve()

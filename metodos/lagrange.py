@@ -14,8 +14,8 @@ class Lagrange(Metodo_Padre):
             self.xi = 2.4
             self.problemImage = "Lagrange_1.png"
         elif selectProblem == 2:
-            self.x = np.array([1, -3, 5, 7])
-            self.y = np.array([-2, 1, 2, -3])
+            self.x = np.array([-3, 1, 5, 7])
+            self.y = np.array([-4, -2, 1, 2])
             self.xi = 2
             self.problemImage = "Lagrange_2.png"
         self.selectProblem = selectProblem

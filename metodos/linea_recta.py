@@ -7,9 +7,14 @@ class Linea_recta:
 
     def __init__(self):
         selectProblem = randint(1, 2)
-        self.x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
-        self.y = np.array([2.5, 2.7, 3.7, 5.2, 6.0, 8.3])
-        self.problemImage = "Linea_recta_1.png"
+        if selectProblem == 1:
+            self.x = np.array([1.1, 1.9, 2.4, 4.8, 5.1, 10.5])
+            self.y = np.array([2.5, 2.7, 3.7, 5.2, 6.0, 8.3])
+            self.problemImage = "Linea_recta_1.png"
+        elif selectProblem == 2:
+            self.x = np.array([3, 4, 10, 15, 25, 36])
+            self.y = np.array([1, 5, 6.2, 7.2, 9.1, 13])
+            self.problemImage = "Linea_recta_2.png"
 
     @staticmethod
     def formula():

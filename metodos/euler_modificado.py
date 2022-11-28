@@ -1,16 +1,21 @@
 import numpy as np
 from math import *
+from random import randint
 
 
 class Euler_Modificado:
 
     def __init__(self):
+        selectProblem = randint(1, 2)
+        if selectProblem == 1:
+            self.problemImage = "EulerModificado_1.png"
+        elif selectProblem == 2:
+            self.problemImage = "EulerModificado_2.png"
         self.t = 0
         self.y = 1.2
         self.h = 0.3
         self.n = 2
         self.y0 = 1.2
-        self.problemImage = "EulerModificado_1.png"
 
     @staticmethod
     def formula():
@@ -20,10 +25,8 @@ class Euler_Modificado:
     def methodName():
         return "EulerModificado"
 
-
-
     def solve(self):
-        def f( t, y):
+        def f(t, y):
             func = ((-3*y*t)-y)/2
             return func
 
@@ -36,18 +39,18 @@ class Euler_Modificado:
         result = np.array([])
 
         for k in range(n):
-                    if(k==0):
-                        y0 = y
-                    else:
-                        y0 = y+h*f(t, y)
-                    y = y+(h/2)*(f(t, y)+f(t+h, y0))
-                    t = t+h
-                    result = np.append(result,y)
+            if (k == 0):
+                y0 = y
+            else:
+                y0 = y+h*f(t, y)
+            y = y+(h/2)*(f(t, y)+f(t+h, y0))
+            t = t+h
+            result = np.append(result, y)
         y
-        a , b = result
-        a = np.round(a,9)
-        b = np.round(b,9)
-        return a,b
+        a, b = result
+        a = np.round(a, 9)
+        b = np.round(b, 9)
+        return a, b
 
     def generatePossibleSolutions(self, standard_deviation=0.5):
         a, b = self.solve()
