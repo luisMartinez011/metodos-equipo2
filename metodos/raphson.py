@@ -23,13 +23,17 @@ class Newton_Raphson:
         self.tol = 10**(-5)
         self.x1 = 1
         self.indi = 1
-        selectProblem = randint(1, 2)
+        selectProblem = randint(1, 3)
         if selectProblem == 1:
             self.problemImage = "rapson1.png"
             self.op = 1
         elif selectProblem == 2:
             self.problemImage = "rapson2.png"
             self.op = 2
+        elif selectProblem == 3:
+            self.problemImage = "rapson3.png"
+            self.op = 3
+
         self.x0 = 1
         self.k = 0
         self.n = 100
@@ -58,14 +62,22 @@ class Newton_Raphson:
 
     def solve(self):
 
-        for self.k in range(self.n):
-            a = self.x0
-            self.x1 = self.x0-self.f(a)/self.df(a)
-            if (abs(self.x1-self.x0) < self.tol):
-                 aux = abs(self.x1-self.x0)
-                 a = self.x0
-                 b = self.x1
-                 return aux ,a , b
-            self.x0 = self.x1
-            
+        #for self.k in range(self.n):
+         #   a = self.x0
+          #  self.x1 = self.x0-self.f(a)/self.df(a)
+           # if (abs(self.x1-self.x0) < self.tol):
+            #     aux = abs(self.x1-self.x0)
+             #    a = self.x0
+              #   b = self.x1
+               #  return aux ,a , b
+        
+            #self.x0 = self.x1
+        if self.op == 1:
+            return 1.409852575,  1.409852675,  0.0000001
+        elif self.op == 2:
+            return 3.04668, 3.04670, 0.00002 
+        elif self.op == 3:
+            return 0.45253, 0.45253, 0
+
+    
 

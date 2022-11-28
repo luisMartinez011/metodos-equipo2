@@ -13,13 +13,17 @@ class Punto_Fijo:
         self.x = 0
         self.m = 0
         self.op = 0 
-        selectProblem = randint(1, 2)
+        selectProblem = randint(1, 3)
         if selectProblem == 1:
             self.problemImage = "pfijo1.png"
             self.op = 1
         elif selectProblem == 2:
             self.problemImage = "pfijo2.png"
             self.op = 2
+        elif selectProblem == 3:
+            self.problemImage = "pfijo3.png"
+            self.op = 3
+
 
     def generatePossibleSolutions(self, standard_deviation = 0.1):
         a, b, e = self.solve()
@@ -28,7 +32,7 @@ class Punto_Fijo:
         fake_solutions = 3
 
         rng = np.random.default_rng()
-        s = rng.normal(e, standard_deviation, size=(fake_solutions,3))
+        s = rng.normal(a, standard_deviation, size=(fake_solutions,3))
         s = np.append(s, [[e,a,b]], axis= 0)
         rng.shuffle(s)
         return s
@@ -43,6 +47,8 @@ class Punto_Fijo:
         return "Punto Fijo"
 
     def solve(self):
+        if self.op == 3:
+            return 3.38760 , 0.98398 , 0.00004
         aux = 0
         if self.op == 1:
             self.m = (exp(self.a) - 2)

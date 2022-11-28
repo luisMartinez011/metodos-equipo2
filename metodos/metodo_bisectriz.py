@@ -19,7 +19,7 @@ class Bisectriz():
         self.m = 0
         self.x = 0
         self.tol = pow(10, -3)
-        selectProblem = randint(1, 2)
+        selectProblem = randint(1, 3)
         if selectProblem == 1:
             self.a = 0
             self.b = 1
@@ -32,6 +32,10 @@ class Bisectriz():
              self.b = 14
              self.formulaElegida = 2
              self.problemImage = "Bisectriz_2.png"
+        elif selectProblem == 3:
+            self.problemImage = "Bisectriz_3.png"
+            self.op = 3
+            
 
     @staticmethod
     def formula():
@@ -55,6 +59,10 @@ class Bisectriz():
             #return pow(x, 3) - 6.5*x + 2
 
     def solve(self):
+        
+        if self.op == 3:
+            return 0.7333984375 , 0.73291015625 , 0.00048828
+        
         self.m1 = self.a
         self.m = self.b
         self.k = 0
