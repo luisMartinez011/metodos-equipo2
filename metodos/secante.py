@@ -10,22 +10,25 @@ class Secante:
 
     def __init__(self):
         # agregar imagenes
-        selectProblem = randint(1, 2)
+        selectProblem = randint(1, 3)
         if(selectProblem == 1):
             self.x1 = 1  # valor siguiente del intervalo
             # valor anterior del intervalo (se sustituye por el valor de x1)
             self.x0 = 0
-            self.op == 1
-        elif(selectProblem == 2):   
+            self.op = 1
             self.problemImage = "secante1.png"
+        elif(selectProblem == 2):   
             self.x1 = 1  # valor siguiente del intervalo
             # valor anterior del intervalo (se sustituye por el valor de x1)
             self.x0 = 0
-            self.op == 2
+            self.op = 2
             self.problemImage = "secante2.png"
         elif(selectProblem == 3):
+            self.x0 = 0
+            self.op = 2
+            self.x1 = 1
             self.problemImage = "secante3.png"
-            self.op == 3
+            self.op = 3
         self.fx1 = 0
         self.fx0 = 0
         self.x = 0
@@ -68,9 +71,9 @@ class Secante:
         if(self.op == 1):
             return 0.567143306, 0.00002705181386
         elif(self.op == 2):
-            return 0.567143306, 0.00002705181386
+            return 0.732910, 0.7331568564
         elif(self.op == 3):
-            return 0.567143306, 0.00002705181386
+            return 0.8531691208, 0.0008388411
 
     def error(self):
         self.err = abs(self.x1 - self.x0)
