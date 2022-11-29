@@ -19,7 +19,7 @@ class Lineal_con_funcion:
                                60.6, 66.66, 82.61, 91.37,
                                105.44, 122.53, 137.77, 152.74, 172.65, 188.84, 207.77,
                                230.94, 251.35, 274.07, 295.95])
-
+            self.fx = np.sin(self.x)
             self.problemImage = "Cuadratica_con_funcion_2.png"
 
     @staticmethod
